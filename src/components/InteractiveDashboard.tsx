@@ -66,88 +66,99 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
         : 'max-w-7xl h-auto md:h-[720px]'
     }`}>
       {/* Sidebar Mockup */}
-      <div className={`bg-[#060d14] border-b md:border-b-0 md:border-r border-tealmint/10 p-4 md:p-5 flex flex-col justify-between shrink-0 transition-all duration-300 ${
-        isHero ? 'w-full md:w-16 items-center' : 'w-full md:w-60'
+      <div className={`bg-[#060d14] border-b md:border-b-0 md:border-r border-tealmint/10 p-3 md:p-5 flex flex-row md:flex-col justify-between items-center shrink-0 transition-all duration-300 w-full ${
+        isHero 
+          ? 'md:w-16 md:items-center' 
+          : 'md:w-60 md:items-stretch'
       }`}>
-        <div className="flex flex-col gap-6 w-full">
+        <div className={`flex flex-row md:flex-col gap-4 md:gap-6 items-center w-auto md:w-full ${isHero ? 'md:items-center' : 'md:items-stretch'}`}>
           {/* Dashboard Mini-Logo */}
-          <div className={`flex items-center ${isHero ? 'justify-center' : 'px-1'}`}>
+          <div className={`flex items-center shrink-0 ${isHero ? 'justify-center' : 'px-1'}`}>
             <Logo 
               showText={!isHero} 
               layout="stacked" 
               iconSize="sm" 
+              textClassName="hidden md:block"
             />
           </div>
 
           {/* Navigation Links */}
-          <div className="flex flex-col gap-2 w-full">
+          <div className="flex flex-row md:flex-col gap-1.5 md:gap-2 shrink-0">
             <button
               onClick={() => setActiveTab('dashboard')}
               title={isHero ? "Dashboard" : undefined}
-              className={`flex items-center gap-3 rounded-lg text-sm font-medium transition-all duration-200 text-left ${
-                isHero ? 'p-2 justify-center w-full' : 'px-4 py-2.5'
+              className={`flex items-center gap-2 md:gap-3 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left p-2 md:p-2.5 ${
+                isHero ? 'md:justify-center w-auto md:w-full' : 'md:px-4 md:py-2.5'
               } ${
                 activeTab === 'dashboard'
-                  ? 'bg-ocean/30 border-l-2 border-tealmint text-tealmint font-semibold'
+                  ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
                   : 'text-pearl/65 hover:bg-pearl/5 hover:text-pearl'
               }`}
             >
               <TrendingUp size={16} />
-              {!isHero && <span>Dashboard</span>}
+              {!isHero && <span className="hidden md:inline">Dashboard</span>}
             </button>
 
             <button
               onClick={() => setActiveTab('assets')}
               title={isHero ? "Asset Classes" : undefined}
-              className={`flex items-center gap-3 rounded-lg text-sm font-medium transition-all duration-200 text-left ${
-                isHero ? 'p-2 justify-center w-full' : 'px-4 py-2.5'
+              className={`flex items-center gap-2 md:gap-3 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left p-2 md:p-2.5 ${
+                isHero ? 'md:justify-center w-auto md:w-full' : 'md:px-4 md:py-2.5'
               } ${
                 activeTab === 'assets'
-                  ? 'bg-ocean/30 border-l-2 border-tealmint text-tealmint font-semibold'
+                  ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
                   : 'text-pearl/65 hover:bg-pearl/5 hover:text-pearl'
               }`}
             >
               <PieChart size={16} />
-              {!isHero && <span>Asset Classes</span>}
+              {!isHero && <span className="hidden md:inline">Asset Classes</span>}
             </button>
 
             <button
               onClick={() => setActiveTab('pe')}
               title={isHero ? "Private Equity Vintage" : undefined}
-              className={`flex items-center gap-3 rounded-lg text-sm font-medium transition-all duration-200 text-left ${
-                isHero ? 'p-2 justify-center w-full' : 'px-4 py-2.5'
+              className={`flex items-center gap-2 md:gap-3 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left p-2 md:p-2.5 ${
+                isHero ? 'md:justify-center w-auto md:w-full' : 'md:px-4 md:py-2.5'
               } ${
                 activeTab === 'pe'
-                  ? 'bg-ocean/30 border-l-2 border-tealmint text-tealmint font-semibold'
+                  ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
                   : 'text-pearl/65 hover:bg-pearl/5 hover:text-pearl'
               }`}
             >
               <Layers size={16} />
-              {!isHero && <span>Private Equity</span>}
+              {!isHero && <span className="hidden md:inline">Private Equity</span>}
             </button>
           </div>
         </div>
 
         {/* Sidebar Footer Elements */}
-        <div className={`flex flex-col gap-4 mt-6 md:mt-0 pt-4 border-t border-tealmint/15 w-full ${isHero ? 'items-center animate-none' : ''}`}>
+        <div className={`flex flex-row md:flex-col gap-3 md:gap-4 mt-0 md:mt-6 pt-0 md:pt-4 border-t-0 md:border-t border-tealmint/15 w-auto md:w-full items-center justify-end md:justify-start ${isHero ? 'md:items-center animate-none' : ''}`}>
           {isHero ? (
-            <div className="flex flex-col gap-4 items-center">
+            <div className="flex flex-row md:flex-col gap-3 md:gap-4 items-center">
               <span title="Admin Mode"><Shield size={16} className="text-tealmint" /></span>
               <span title="Settings"><Settings size={16} className="hover:text-tealmint cursor-pointer text-pearl/50 transition-colors" /></span>
             </div>
           ) : (
             <>
-              <div className="flex items-center justify-between text-xs text-pearl/55 px-2">
-                <span className="flex items-center gap-1">
-                  <Shield size={12} className="text-tealmint" />
-                  <span>Admin Mode</span>
-                </span>
-                <Settings size={12} className="hover:text-tealmint cursor-pointer" />
+              {/* Desktop-only detailed layouts */}
+              <div className="hidden md:flex flex-col gap-4 w-full">
+                <div className="flex items-center justify-between text-xs text-pearl/55 px-2">
+                  <span className="flex items-center gap-1">
+                    <Shield size={12} className="text-tealmint" />
+                    <span>Admin Mode</span>
+                  </span>
+                  <Settings size={12} className="hover:text-tealmint cursor-pointer" />
+                </div>
+                
+                <div className="flex items-center justify-between text-xs text-pearl/40 px-2">
+                  <span>Aman (CEO)</span>
+                  <LogOut size={12} className="hover:text-red-400 cursor-pointer" />
+                </div>
               </div>
-              
-              <div className="flex items-center justify-between text-xs text-pearl/40 px-2">
-                <span>Aman (CEO)</span>
-                <LogOut size={12} className="hover:text-red-400 cursor-pointer" />
+              {/* Mobile-only compact icon row */}
+              <div className="flex md:hidden items-center gap-3">
+                <Shield size={16} className="text-tealmint" />
+                <Settings size={16} className="text-pearl/50 hover:text-tealmint cursor-pointer" />
               </div>
             </>
           )}

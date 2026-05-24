@@ -4,13 +4,15 @@ interface LogoProps {
   showText?: boolean;
   layout?: 'stacked' | 'horizontal';
   iconSize?: 'sm' | 'md' | 'lg';
+  textClassName?: string;
 }
 
 export default function Logo({ 
   className = '', 
   showText = true, 
   layout = 'stacked',
-  iconSize = 'md' 
+  iconSize = 'md',
+  textClassName = ''
 }: LogoProps) {
   
   // Icon dimensions
@@ -74,7 +76,7 @@ export default function Logo({
       {showText && (
         <>
           {layout === 'stacked' ? (
-            <div className="flex flex-col text-left leading-[1.1] font-sans">
+            <div className={`flex flex-col text-left leading-[1.1] font-sans ${textClassName}`}>
               <span className="text-[15px] font-extrabold tracking-tight text-pearl transition-colors duration-300 group-hover:text-tealmint">
                 Optimiz
               </span>
@@ -83,7 +85,7 @@ export default function Logo({
               </span>
             </div>
           ) : (
-            <span className="font-sans text-xl font-bold tracking-tight text-pearl transition-colors duration-300 group-hover:text-tealmint">
+            <span className={`font-sans text-xl font-bold tracking-tight text-pearl transition-colors duration-300 group-hover:text-tealmint ${textClassName}`}>
               Optimiz<span className="text-tealmint">Alpha</span>
             </span>
           )}
