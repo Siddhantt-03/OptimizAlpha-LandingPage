@@ -282,7 +282,7 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
 
           {/* Desktop split layout (large screens) */}
-          <div className="hidden lg:grid grid-cols-12 gap-12 items-start">
+          <div className="hidden lg:grid grid-cols-12 gap-12">
             {/* Left side list items */}
             <div className="col-span-5 flex flex-col gap-4">
               {features.map((feat, idx) => {
@@ -327,21 +327,26 @@ export default function Home({ onNavigate }: HomeProps) {
               })}
             </div>
 
-            {/* Right side Showcase Window */}
-            <div className="col-span-7 sticky top-28 h-[500px] rounded-2xl border border-tealmint/15 bg-[#04090e] shadow-2xl p-6 relative overflow-hidden flex flex-col justify-between">
-              {/* Browser Mock Top bar decoration */}
-              <div className="absolute top-0 left-0 right-0 h-10 border-b border-tealmint/10 bg-[#060c14] px-4 flex items-center gap-1.5 shrink-0 z-10">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-                <div className="h-4 w-44 rounded bg-[#0b141e] border border-tealmint/10 mx-auto text-[7px] font-mono text-pearl/30 flex items-center justify-center tracking-wider uppercase select-none">
-                  OA://ANALYTICS_PREVIEW
+            {/* Right side Showcase Window (Stretched column so sticky is bounded) */}
+            <div className="col-span-7 relative">
+              <div 
+                className="sticky top-28 h-[500px] rounded-2xl border border-tealmint/15 bg-[#04090e] shadow-2xl p-6 relative overflow-hidden flex flex-col justify-between transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                style={{ transform: `translateY(${activeFeature * 78}px)` }}
+              >
+                {/* Browser Mock Top bar decoration */}
+                <div className="absolute top-0 left-0 right-0 h-10 border-b border-tealmint/10 bg-[#060c14] px-4 flex items-center gap-1.5 shrink-0 z-10">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                  <div className="h-4 w-44 rounded bg-[#0b141e] border border-tealmint/10 mx-auto text-[7px] font-mono text-pearl/30 flex items-center justify-center tracking-wider uppercase select-none">
+                    OA://ANALYTICS_PREVIEW
+                  </div>
                 </div>
-              </div>
-              
-              {/* Showcase Container */}
-              <div className="flex-1 mt-8 pt-4 overflow-y-auto scroll-hide-scrollbar">
-                <FeatureShowcase activeIndex={activeFeature} />
+                
+                {/* Showcase Container */}
+                <div className="flex-1 mt-8 pt-4 overflow-y-auto scroll-hide-scrollbar">
+                  <FeatureShowcase activeIndex={activeFeature} />
+                </div>
               </div>
             </div>
           </div>
