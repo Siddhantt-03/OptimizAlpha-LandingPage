@@ -1,4 +1,5 @@
 import { ShieldCheck, Linkedin, Twitter, ArrowUp } from 'lucide-react';
+import Logo from './Logo';
 
 interface FooterProps {
   currentPath: string;
@@ -43,16 +44,8 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8 pb-16">
           {/* Logo & Tagline */}
           <div className="col-span-2 md:col-span-2 flex flex-col gap-6">
-            <div
-              onClick={() => handleItemClick('/')}
-              className="flex items-center gap-2 cursor-pointer group w-fit"
-            >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-ocean to-tealmint flex items-center justify-center shadow-md shadow-tealmint/20">
-                <span className="font-mono text-xs font-bold text-navy">OA</span>
-              </div>
-              <span className="font-display text-2xl font-bold text-pearl transition-colors duration-300 group-hover:text-tealmint">
-                OptimizAlpha<span className="text-tealmint">.</span>
-              </span>
+            <div onClick={() => handleItemClick('/')}>
+              <Logo layout="stacked" />
             </div>
 
             <p className="text-sm text-pearl/70 leading-relaxed max-w-sm">

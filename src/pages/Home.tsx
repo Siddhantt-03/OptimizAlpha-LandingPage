@@ -8,10 +8,12 @@ import {
   MessageSquare,
   Network,
   Activity,
-  Award
+  Award,
+  ChevronRight
 } from 'lucide-react';
 import InteractiveDashboard from '../components/InteractiveDashboard';
 import SpotlightEffect from '../components/SpotlightEffect';
+import FeatureShowcase from '../components/FeatureShowcase';
 
 
 interface CounterProps {
@@ -57,6 +59,8 @@ interface HomeProps {
 }
 
 export default function Home({ onNavigate }: HomeProps) {
+  const [activeFeature, setActiveFeature] = useState(0);
+
   // Typewriter taglines
   const phrases = [
     "Attribution analytics built for family offices.",
@@ -211,19 +215,19 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="absolute w-[450px] h-[450px] rounded-full bg-tealmint/10 blur-[90px] -z-10" />
 
             <div className="w-full animate-float max-w-lg md:max-w-none">
-              <InteractiveDashboard />
+              <InteractiveDashboard isHero={true} />
             </div>
 
             {/* Floating Metric Card 1 */}
-            <div className="absolute -top-6 -left-6 bg-ocean/90 border border-tealmint/35 backdrop-blur-md rounded-xl p-3.5 shadow-xl shadow-navy/50 animate-float-slow hidden md:block">
-              <span className="text-[9px] font-mono text-pearl/50 block">SHARPE RATIO</span>
-              <span className="text-base font-mono font-bold text-tealmint">1.42 YTD</span>
+            <div className="absolute -top-6 -left-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float-slow hidden md:block hover:border-tealmint/50 transition-colors duration-300">
+              <span className="text-[9px] font-mono text-pearl/50 tracking-wider uppercase block">ALPHA GENERATED</span>
+              <span className="text-base font-mono font-bold text-tealmint">+3.81% YTD</span>
             </div>
 
             {/* Floating Metric Card 2 */}
-            <div className="absolute bottom-12 -right-8 bg-ocean/90 border border-tealmint/35 backdrop-blur-md rounded-xl p-3.5 shadow-xl shadow-navy/50 animate-float hidden md:block">
-              <span className="text-[9px] font-mono text-pearl/50 block">MAX DRAWDOWN</span>
-              <span className="text-base font-mono font-bold text-red-400">-4.20% Spk</span>
+            <div className="absolute bottom-8 -right-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float hidden md:block hover:border-tealmint/50 transition-colors duration-300">
+              <span className="text-[9px] font-mono text-pearl/50 tracking-wider uppercase block">MAX DRAWDOWN</span>
+              <span className="text-base font-mono font-bold text-red-400">-4.20% Peak</span>
             </div>
           </div>
         </div>
@@ -264,7 +268,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* 4. FEATURES GRID */}
+      {/* 4. FEATURES GRID / SHOWCASE */}
       <section id="features" className="py-24 bg-[#03070b] relative">
         {/* Glow corner */}
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-ocean/5 blur-[120px]" />
@@ -277,31 +281,121 @@ export default function Home({ onNavigate }: HomeProps) {
             </h2>
           </div>
 
-          {/* Grid Layout (2-Column) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {features.map((feat, idx) => (
-              <div 
-                key={idx}
-                className="glass-card hover:bg-ocean/15 border border-tealmint/15 rounded-2xl p-8 flex gap-6 hover:border-tealmint/40 transition-all duration-300 relative group"
-              >
-                <div className="w-12 h-12 rounded-xl bg-ocean/20 flex items-center justify-center shrink-0 shadow-md">
-                  {feat.icon}
-                </div>
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-display text-xl font-bold text-pearl group-hover:text-tealmint transition-colors duration-200">
-                      {feat.title}
-                    </h3>
-                    <span className="font-mono text-[9px] uppercase tracking-wider text-tealmint px-2 py-0.5 rounded-full bg-tealmint/10 border border-tealmint/20">
-                      {feat.pill}
-                    </span>
+          {/* Desktop split layout (large screens) */}
+          <div className="hidden lg:grid grid-cols-12 gap-12 items-start">
+            {/* Left side list items */}
+            <div className="col-span-5 flex flex-col gap-4">
+              {features.map((feat, idx) => {
+                const isActive = activeFeature === idx;
+                return (
+                  <div 
+                    key={idx}
+                    onMouseEnter={() => setActiveFeature(idx)}
+                    className={`border rounded-xl p-5 flex gap-4 transition-all duration-300 cursor-pointer relative group ${
+                      isActive 
+                        ? 'bg-ocean/20 border-tealmint/40 shadow-lg shadow-tealmint/5' 
+                        : 'glass-card border-tealmint/10 hover:border-tealmint/25 hover:bg-ocean/5'
+                    }`}
+                  >
+                    {/* Active highlight side line */}
+                    {isActive && (
+                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-tealmint rounded-l-xl" />
+                    )}
+                    
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 shadow-md transition-colors ${
+                      isActive ? 'bg-tealmint text-navy' : 'bg-ocean/20 text-tealmint'
+                    }`}>
+                      {feat.icon}
+                    </div>
+                    <div className="flex flex-col gap-1 flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2">
+                        <h3 className={`font-display text-lg font-bold transition-colors truncate ${
+                          isActive ? 'text-tealmint' : 'text-pearl'
+                        }`}>
+                          {feat.title}
+                        </h3>
+                        <span className="font-mono text-[8px] uppercase tracking-wider text-tealmint px-2 py-0.5 rounded-full bg-tealmint/10 border border-tealmint/20 shrink-0">
+                          {feat.pill}
+                        </span>
+                      </div>
+                      <p className="text-xs text-pearl/70 leading-relaxed group-hover:text-pearl/90 transition-colors">
+                        {feat.desc}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-sm text-pearl/75 leading-relaxed">
-                    {feat.desc}
-                  </p>
+                );
+              })}
+            </div>
+
+            {/* Right side Showcase Window */}
+            <div className="col-span-7 sticky top-28 h-[500px] rounded-2xl border border-tealmint/15 bg-[#04090e] shadow-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+              {/* Browser Mock Top bar decoration */}
+              <div className="absolute top-0 left-0 right-0 h-10 border-b border-tealmint/10 bg-[#060c14] px-4 flex items-center gap-1.5 shrink-0 z-10">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                <div className="h-4 w-44 rounded bg-[#0b141e] border border-tealmint/10 mx-auto text-[7px] font-mono text-pearl/30 flex items-center justify-center tracking-wider uppercase select-none">
+                  OA://ANALYTICS_PREVIEW
                 </div>
               </div>
-            ))}
+              
+              {/* Showcase Container */}
+              <div className="flex-1 mt-8 pt-4 overflow-y-auto scroll-hide-scrollbar">
+                <FeatureShowcase activeIndex={activeFeature} />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile responsive layout (md and below) */}
+          <div className="flex flex-col gap-6 lg:hidden">
+            {features.map((feat, idx) => {
+              const isExpanded = activeFeature === idx;
+              return (
+                <div 
+                  key={idx}
+                  onClick={() => setActiveFeature(activeFeature === idx ? -1 : idx)}
+                  className={`border rounded-xl p-5 flex flex-col gap-3 transition-all duration-300 cursor-pointer ${
+                    isExpanded ? 'bg-ocean/20 border-tealmint/30 shadow-lg' : 'glass-card border-tealmint/10'
+                  }`}
+                >
+                  <div className="flex gap-4 items-center">
+                    <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-md ${
+                      isExpanded ? 'bg-tealmint text-navy' : 'bg-ocean/20 text-tealmint'
+                    }`}>
+                      {feat.icon}
+                    </div>
+                    <div className="flex-1 flex items-center justify-between min-w-0">
+                      <div>
+                        <h3 className={`font-display text-base font-bold truncate ${
+                          isExpanded ? 'text-tealmint' : 'text-pearl'
+                        }`}>
+                          {feat.title}
+                        </h3>
+                        <span className="font-mono text-[7px] uppercase tracking-wider text-tealmint">
+                          {feat.pill}
+                        </span>
+                      </div>
+                      <ChevronRight size={14} className={`text-pearl/40 transition-transform ${isExpanded ? 'rotate-90 text-tealmint' : ''}`} />
+                    </div>
+                  </div>
+                  
+                  <p className="text-xs text-pearl/70 leading-relaxed">
+                    {feat.desc}
+                  </p>
+
+                  {/* Accordion Expandable Snapshot Preview */}
+                  {isExpanded && (
+                    <div className="mt-4 pt-4 border-t border-tealmint/10 animate-fadeIn">
+                      <div className="rounded-xl border border-tealmint/10 bg-[#04090e] p-4 relative overflow-hidden h-[340px]">
+                        <div className="h-full overflow-y-auto scroll-hide-scrollbar">
+                          <FeatureShowcase activeIndex={idx} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

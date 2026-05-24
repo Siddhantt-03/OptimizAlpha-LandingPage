@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, ShieldCheck } from 'lucide-react';
+import Logo from './Logo';
 
 interface NavbarProps {
   currentPath: string;
@@ -67,16 +68,8 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
-          <div
-            onClick={() => handleItemClick('/')}
-            className="flex items-center gap-2 cursor-pointer group"
-          >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-ocean to-tealmint flex items-center justify-center shadow-md shadow-tealmint/20">
-              <span className="font-mono text-xs font-bold text-navy">OA</span>
-            </div>
-            <span className="font-display text-2xl font-bold tracking-tight text-pearl transition-colors duration-300 group-hover:text-tealmint">
-              OptimizAlpha<span className="text-tealmint">.</span>
-            </span>
+          <div onClick={() => handleItemClick('/')}>
+            <Logo layout="stacked" />
           </div>
 
           {/* Center Links (Desktop) */}
