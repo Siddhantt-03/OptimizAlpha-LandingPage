@@ -219,13 +219,13 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
 
             {/* Floating Metric Card 1 */}
-            <div className="absolute -top-6 -left-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float-slow hidden md:block hover:border-tealmint/50 transition-colors duration-300">
+            <div className="absolute -top-6 -left-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float-slow hidden lg:block hover:border-tealmint/50 transition-colors duration-300">
               <span className="text-[9px] font-mono text-pearl/50 tracking-wider uppercase block">ALPHA GENERATED</span>
               <span className="text-base font-mono font-bold text-tealmint">+3.81% YTD</span>
             </div>
 
             {/* Floating Metric Card 2 */}
-            <div className="absolute bottom-8 -right-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float hidden md:block hover:border-tealmint/50 transition-colors duration-300">
+            <div className="absolute bottom-8 -right-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float hidden lg:block hover:border-tealmint/50 transition-colors duration-300">
               <span className="text-[9px] font-mono text-pearl/50 tracking-wider uppercase block">MAX DRAWDOWN</span>
               <span className="text-base font-mono font-bold text-red-400">-4.20% Peak</span>
             </div>

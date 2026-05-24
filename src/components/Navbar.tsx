@@ -73,7 +73,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           </div>
 
           {/* Center Links (Desktop) */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => {
               const isActive =
                 currentPath === item.path ||
@@ -96,7 +96,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           </div>
 
           {/* Right Actions (Desktop) */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={() => handleItemClick('/contact')}
               className="px-4 py-2 text-sm font-medium text-pearl hover:text-tealmint transition-colors duration-300"
@@ -114,7 +114,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-pearl/85 hover:text-tealmint transition-colors"
+            className="lg:hidden p-2 text-pearl/85 hover:text-tealmint transition-colors"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -123,7 +123,7 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-30 bg-navy/98 backdrop-blur-md flex flex-col pt-32 px-8 transition-all duration-300 animate-fadeIn md:hidden">
+        <div className="fixed inset-0 z-30 bg-navy/98 backdrop-blur-md flex flex-col pt-32 px-8 transition-all duration-300 animate-fadeIn lg:hidden">
           <div className="flex flex-col gap-6 text-center">
             {navItems.map((item) => (
               <button

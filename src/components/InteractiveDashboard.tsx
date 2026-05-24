@@ -170,7 +170,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
         {/* Mock Top bar */}
         <div className="h-16 border-b border-tealmint/10 px-6 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono text-pearl/40">Workspace / </span>
+            <span className="text-xs font-mono text-pearl/40 hidden sm:inline">Workspace / </span>
             <span className="text-xs font-mono text-tealmint">
               {activeTab === 'dashboard' && (isHero ? 'Overview' : 'Portfolio Overview')}
               {activeTab === 'assets' && (isHero ? 'Allocations' : 'Asset Class Allocation')}
@@ -186,13 +186,13 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
               </span>
             ) : (
               <>
-                <button className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-ocean/20 border border-tealmint/20 text-[11px] font-mono hover:bg-ocean/40 transition-colors text-pearl/80">
+                <button className="flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded bg-ocean/20 border border-tealmint/20 text-[11px] font-mono hover:bg-ocean/40 transition-colors text-pearl/80">
                   <Download size={12} />
-                  <span>Export PDF</span>
+                  <span className="hidden sm:inline">Export PDF</span>
                 </button>
-                <button className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-ocean/20 border border-tealmint/20 text-[11px] font-mono hover:bg-ocean/40 transition-colors text-pearl/80">
+                <button className="flex items-center gap-1.5 p-1.5 sm:px-3 sm:py-1.5 rounded bg-ocean/20 border border-tealmint/20 text-[11px] font-mono hover:bg-ocean/40 transition-colors text-pearl/80">
                   <Sliders size={12} />
-                  <span>Preferences</span>
+                  <span className="hidden sm:inline">Preferences</span>
                 </button>
               </>
             )}
