@@ -223,20 +223,26 @@ export default function Home({ onNavigate }: HomeProps) {
       </section>
 
       {/* 4. FEATURES GRID / SHOWCASE */}
-      <section id="features" className="py-24 bg-[#03070b] relative">
-        {/* Glow corner */}
-        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-ocean/5 blur-[120px]" />
+      <section id="features" className="py-24 bg-[#03070b] bg-financial-grid border-b border-tealmint/10 relative z-10">
+        {/* Deep background radial spotlight glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-ocean/5 blur-[150px] pointer-events-none" />
 
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl mb-16">
-            <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Institutional Analytics Suite</span>
-            <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-pearl">
-              Every angle. Every asset class. One platform.
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-tealmint/10 border border-tealmint/25 backdrop-blur-md mb-4 shadow-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-tealmint animate-pulse" />
+              <span className="font-mono text-xs font-semibold text-tealmint uppercase tracking-wider">
+                Institutional Analytics Suite
+              </span>
+            </div>
+            <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-pearl leading-none mt-2">
+              Every angle. Every asset class. <br />
+              <span className="bg-gradient-to-r from-ocean to-tealmint bg-clip-text text-transparent">One platform.</span>
             </h2>
           </div>
 
           {/* Desktop split layout (large screens) */}
-          <div className="hidden lg:grid grid-cols-12 gap-12">
+          <div className="hidden lg:grid grid-cols-12 gap-12 items-start">
             {/* Left side list items */}
             <div className="col-span-5 flex flex-col gap-4">
               {features.map((feat, idx) => {
@@ -245,30 +251,35 @@ export default function Home({ onNavigate }: HomeProps) {
                   <div 
                     key={idx}
                     onMouseEnter={() => setActiveFeature(idx)}
-                    className={`border rounded-xl p-5 flex gap-4 transition-all duration-300 cursor-pointer relative group ${
+                    className={`border rounded-2xl p-5 flex gap-4 transition-all duration-300 cursor-pointer relative group ${
                       isActive 
-                        ? 'bg-ocean/20 border-tealmint/40 shadow-lg shadow-tealmint/5' 
-                        : 'glass-card border-tealmint/10 hover:border-tealmint/25 hover:bg-ocean/5'
+                        ? 'bg-ocean/15 border-tealmint/40 shadow-xl shadow-tealmint/5 hover:scale-[1.01]' 
+                        : 'bg-[#050c12]/40 border-tealmint/10 hover:border-tealmint/25 hover:bg-ocean/5 hover:scale-[1.01]'
                     }`}
                   >
                     {/* Active highlight side line */}
                     {isActive && (
-                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-tealmint rounded-l-xl" />
+                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-tealmint rounded-l-2xl" />
                     )}
                     
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 shadow-md transition-colors ${
-                      isActive ? 'bg-tealmint text-navy' : 'bg-ocean/20 text-tealmint'
+                    {/* Subtle quant index indicator */}
+                    <span className="absolute top-4 right-4 font-mono text-[8px] text-tealmint/30 group-hover:text-tealmint/60 transition-colors">
+                      [0{idx + 1}]
+                    </span>
+                    
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all duration-300 ${
+                      isActive ? 'bg-tealmint text-navy' : 'bg-tealmint/5 border border-tealmint/20 text-tealmint group-hover:bg-tealmint group-hover:text-navy'
                     }`}>
                       {feat.icon}
                     </div>
-                    <div className="flex flex-col gap-1 flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2">
-                        <h3 className={`font-display text-lg font-bold transition-colors truncate ${
+                    <div className="flex flex-col gap-1 flex-1 min-w-0 pr-6">
+                      <div className="flex items-center gap-2">
+                        <h3 className={`font-display text-xl font-bold transition-colors truncate ${
                           isActive ? 'text-tealmint' : 'text-pearl'
                         }`}>
                           {feat.title}
                         </h3>
-                        <span className="font-mono text-[8px] uppercase tracking-wider text-tealmint px-2 py-0.5 rounded-full bg-tealmint/10 border border-tealmint/20 shrink-0">
+                        <span className="font-mono text-[8px] uppercase tracking-wider text-tealmint px-2 py-0.5 rounded-full bg-tealmint/10 border border-tealmint/20 shrink-0 select-none">
                           {feat.pill}
                         </span>
                       </div>
@@ -282,9 +293,9 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
 
             {/* Right side Showcase Window (Stretched column so sticky is bounded) */}
-            <div className="col-span-7 relative">
+            <div className="col-span-7 relative h-full">
               <div 
-                className="sticky top-28 h-[500px] rounded-2xl border border-tealmint/15 bg-[#04090e] shadow-2xl p-6 relative overflow-hidden flex flex-col justify-between transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                className="sticky top-28 h-[500px] rounded-3xl border border-tealmint/15 bg-[#04090e] shadow-2xl premium-glow-shadow p-6 relative overflow-hidden flex flex-col justify-between transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-tealmint/25"
                 style={{ transform: `translateY(${activeFeature * 78}px)` }}
               >
                 {/* Browser Mock Top bar decoration */}

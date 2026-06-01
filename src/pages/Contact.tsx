@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Globe, MapPin, Linkedin, CheckCircle2, AlertCircle } from 'lucide-react';
+import SpotlightEffect from '../components/SpotlightEffect';
 
 interface FormState {
   fullName: string;
@@ -100,27 +101,41 @@ ${formData.message}
   };
 
   return (
-    <div className="bg-navy min-h-screen pt-32 pb-24 text-pearl">
-      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-        {/* Header Hero */}
+    <SpotlightEffect opacity={0.12} className="bg-navy min-h-screen pt-32 pb-24 text-pearl bg-financial-grid relative">
+      {/* Dynamic ambient backdrop glows */}
+      <div className="absolute top-1/4 left-1/10 w-96 h-96 rounded-full bg-ocean/5 blur-[120px] pointer-events-none animate-aurora-1" />
+      <div className="absolute bottom-1/4 right-1/10 w-96 h-96 rounded-full bg-tealmint/5 blur-[120px] pointer-events-none animate-aurora-2" />
+
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
+        
+        {/* Header Hero Title */}
         <section className="text-center mb-16 relative">
           <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-ocean/10 blur-[100px] pointer-events-none" />
           
-          <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-3">
-            Institutional Portfolio Intelligence
-          </span>
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-tealmint/10 border border-tealmint/25 backdrop-blur-md mb-4 shadow-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-tealmint animate-pulse" />
+            <span className="font-mono text-xs font-semibold text-tealmint uppercase tracking-wider">
+              Institutional Portfolio Intelligence
+            </span>
+          </div>
+
           <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-pearl mb-6">
-            Let's establish your golden source of truth.
+            Let's establish your <br />
+            <span className="bg-gradient-to-r from-ocean to-tealmint bg-clip-text text-transparent">golden source of truth.</span>
           </h1>
           <p className="text-sm md:text-base text-pearl/70 max-w-2xl mx-auto leading-relaxed">
             Connect with our advisory quants to discover how OptimizAlpha can consolidate your multi-asset portfolio, automate custodian feeds, and elevate your analytical command centre.
           </p>
         </section>
 
-        {/* Two-Column Grid */}
+        {/* Two-Column Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mt-8">
-          {/* Left Column: Form */}
-          <div className="lg:col-span-7 bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 relative">
+          
+          {/* Left Column: Intake Form (lg:col-span-7) */}
+          <div className="lg:col-span-7 bg-[#050c12]/80 border border-tealmint/15 rounded-3xl p-8 md:p-10 shadow-2xl premium-glow-shadow relative transition-all duration-500 hover:border-tealmint/30">
+            <div className="absolute inset-0 bg-gradient-to-b from-ocean/5 to-transparent pointer-events-none rounded-3xl" />
+            
             <AnimatePresence mode="wait">
               {!isSuccess ? (
                 <motion.form
@@ -128,21 +143,23 @@ ${formData.message}
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSubmit}
-                  className="space-y-6 text-left"
+                  className="space-y-6 text-left relative z-10"
                 >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Full Name */}
                     <div className="flex flex-col gap-2">
-                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider">Full Name *</label>
+                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider font-bold">Full Name *</label>
                       <input
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-lg bg-navy border ${errors.fullName ? 'border-red-400' : 'border-tealmint/20'} text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:border-tealmint transition-colors`}
+                        className={`w-full px-4 py-3 rounded-xl bg-navy/60 border ${
+                          errors.fullName ? 'border-red-400 focus:border-red-400' : 'border-tealmint/20 focus:border-tealmint'
+                        } text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:ring-1 focus:ring-tealmint/30 transition-all shadow-inner`}
                         placeholder="John Doe"
                       />
                       {errors.fullName && (
-                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono">
+                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono mt-0.5">
                           <AlertCircle size={10} />
                           {errors.fullName}
                         </span>
@@ -151,16 +168,18 @@ ${formData.message}
 
                     {/* Email */}
                     <div className="flex flex-col gap-2">
-                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider">Work Email *</label>
+                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider font-bold">Work Email *</label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-lg bg-navy border ${errors.email ? 'border-red-400' : 'border-tealmint/20'} text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:border-tealmint transition-colors`}
+                        className={`w-full px-4 py-3 rounded-xl bg-navy/60 border ${
+                          errors.email ? 'border-red-400 focus:border-red-400' : 'border-tealmint/20 focus:border-tealmint'
+                        } text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:ring-1 focus:ring-tealmint/30 transition-all shadow-inner`}
                         placeholder="jdoe@firm.com"
                       />
                       {errors.email && (
-                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono">
+                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono mt-0.5">
                           <AlertCircle size={10} />
                           {errors.email}
                         </span>
@@ -171,16 +190,18 @@ ${formData.message}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {/* Firm Name */}
                     <div className="flex flex-col gap-2 md:col-span-1">
-                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider">Firm Name *</label>
+                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider font-bold">Firm Name *</label>
                       <input
                         type="text"
                         value={formData.firmName}
                         onChange={(e) => setFormData({ ...formData, firmName: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-lg bg-navy border ${errors.firmName ? 'border-red-400' : 'border-tealmint/20'} text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:border-tealmint transition-colors`}
+                        className={`w-full px-4 py-3 rounded-xl bg-navy/60 border ${
+                          errors.firmName ? 'border-red-400 focus:border-red-400' : 'border-tealmint/20 focus:border-tealmint'
+                        } text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:ring-1 focus:ring-tealmint/30 transition-all shadow-inner`}
                         placeholder="Apex Capital"
                       />
                       {errors.firmName && (
-                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono">
+                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono mt-0.5">
                           <AlertCircle size={10} />
                           {errors.firmName}
                         </span>
@@ -189,21 +210,23 @@ ${formData.message}
 
                     {/* AUM Range */}
                     <div className="flex flex-col gap-2">
-                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider">AUM Range *</label>
+                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider font-bold">AUM Range *</label>
                       <select
                         value={formData.aumRange}
                         onChange={(e) => setFormData({ ...formData, aumRange: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-lg bg-navy border ${errors.aumRange ? 'border-red-400' : 'border-tealmint/20'} text-sm text-pearl focus:outline-none focus:border-tealmint transition-colors`}
+                        className={`w-full px-4 py-3 rounded-xl bg-navy/60 border ${
+                          errors.aumRange ? 'border-red-400 focus:border-red-400' : 'border-tealmint/20 focus:border-tealmint'
+                        } text-sm text-pearl focus:outline-none focus:ring-1 focus:ring-tealmint/30 transition-all cursor-pointer`}
                       >
-                        <option value="" disabled>Select Range</option>
-                        <option value="<$100M">&lt;$100M</option>
-                        <option value="$100M-$500M">$100M–$500M</option>
-                        <option value="$500M-$2B">$500M–$2B</option>
-                        <option value="$2B-$10B">$2B–$10B</option>
-                        <option value="$10B+">$10B+</option>
+                        <option value="" disabled className="bg-navy text-pearl/40">Select Range</option>
+                        <option value="<$100M" className="bg-navy">{"<$100M"}</option>
+                        <option value="$100M-$500M" className="bg-navy">$100M–$500M</option>
+                        <option value="$500M-$2B" className="bg-navy">$500M–$2B</option>
+                        <option value="$2B-$10B" className="bg-navy">$2B–$10B</option>
+                        <option value="$10B+" className="bg-navy">$10B+</option>
                       </select>
                       {errors.aumRange && (
-                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono">
+                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono mt-0.5">
                           <AlertCircle size={10} />
                           {errors.aumRange}
                         </span>
@@ -212,21 +235,23 @@ ${formData.message}
 
                     {/* Role */}
                     <div className="flex flex-col gap-2">
-                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider">Role *</label>
+                      <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider font-bold">Role *</label>
                       <select
                         value={formData.role}
                         onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                        className={`w-full px-4 py-3 rounded-lg bg-navy border ${errors.role ? 'border-red-400' : 'border-tealmint/20'} text-sm text-pearl focus:outline-none focus:border-tealmint transition-colors`}
+                        className={`w-full px-4 py-3 rounded-xl bg-navy/60 border ${
+                          errors.role ? 'border-red-400 focus:border-red-400' : 'border-tealmint/20 focus:border-tealmint'
+                        } text-sm text-pearl focus:outline-none focus:ring-1 focus:ring-tealmint/30 transition-all cursor-pointer`}
                       >
-                        <option value="" disabled>Select Role</option>
-                        <option value="CIO">CIO</option>
-                        <option value="Portfolio Manager">Portfolio Manager</option>
-                        <option value="Head of Operations">Head of Operations</option>
-                        <option value="Technology">Technology</option>
-                        <option value="Other">Other</option>
+                        <option value="" disabled className="bg-navy text-pearl/40">Select Role</option>
+                        <option value="CIO" className="bg-navy">CIO</option>
+                        <option value="Portfolio Manager" className="bg-navy">Portfolio Manager</option>
+                        <option value="Head of Operations" className="bg-navy">Head of Operations</option>
+                        <option value="Technology" className="bg-navy">Technology</option>
+                        <option value="Other" className="bg-navy">Other</option>
                       </select>
                       {errors.role && (
-                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono">
+                        <span className="text-[10px] text-red-400 flex items-center gap-1 font-mono mt-0.5">
                           <AlertCircle size={10} />
                           {errors.role}
                         </span>
@@ -236,12 +261,12 @@ ${formData.message}
 
                   {/* Message */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider">How can we help?</label>
+                    <label className="font-mono text-[10px] text-pearl/65 uppercase tracking-wider font-bold">How can we help?</label>
                     <textarea
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-navy border border-tealmint/20 text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:border-tealmint transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-navy/60 border border-tealmint/20 text-sm text-pearl placeholder-pearl/30 focus:outline-none focus:border-tealmint focus:ring-1 focus:ring-tealmint/30 transition-all shadow-inner"
                       placeholder="Attribution customization, vintage PE support, SOC 2 details..."
                     />
                   </div>
@@ -250,7 +275,7 @@ ${formData.message}
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-glow w-full py-3.5 rounded-full bg-ocean border border-tealmint/30 text-pearl font-semibold text-sm hover:bg-tealmint hover:text-navy transition-all duration-300 flex justify-center items-center gap-2"
+                    className="btn-glow w-full py-4 rounded-full bg-ocean border border-tealmint/30 text-pearl font-bold text-sm hover:bg-tealmint hover:text-navy transition-all duration-300 flex justify-center items-center gap-2 cursor-pointer shadow-lg"
                   >
                     {isSubmitting ? (
                       <span className="w-5 h-5 rounded-full border-2 border-pearl border-t-transparent animate-spin" />
@@ -264,19 +289,22 @@ ${formData.message}
                   key="success-card"
                   initial={{ scale: 0.95, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.95, opacity: 0 }}
                   transition={{ duration: 0.4, type: "spring" }}
-                  className="py-16 text-center flex flex-col items-center gap-6"
+                  className="py-16 text-center flex flex-col items-center gap-6 relative z-10"
                 >
-                  <CheckCircle2 size={64} className="text-tealmint animate-bounce" />
-                  <div className="flex flex-col gap-2">
-                    <h3 className="font-display text-2xl font-bold text-pearl">Message Sent Successfully</h3>
-                    <p className="text-sm text-pearl/70 max-w-sm leading-relaxed mt-1">
+                  <div className="p-4 rounded-full bg-tealmint/10 border border-tealmint/30 shadow-lg animate-bounce">
+                    <CheckCircle2 size={56} className="text-tealmint" />
+                  </div>
+                  <div className="flex flex-col gap-2 max-w-sm">
+                    <h3 className="font-display text-3xl font-bold text-pearl">Message Sent Successfully</h3>
+                    <p className="text-xs md:text-sm text-pearl/70 leading-relaxed mt-2">
                       Thank you for contacting OptimizAlpha. An advisory quantitative manager will review your submission and connect with you within 4 business hours.
                     </p>
                   </div>
                   <button
                     onClick={() => setIsSuccess(false)}
-                    className="font-mono text-[11px] text-tealmint uppercase tracking-widest hover:text-pearl transition-colors"
+                    className="font-mono text-[10px] text-tealmint uppercase tracking-widest hover:text-pearl border border-tealmint/25 hover:border-tealmint px-5 py-2.5 rounded-full transition-all duration-300 cursor-pointer mt-4"
                   >
                     ← Back to form
                   </button>
@@ -285,62 +313,75 @@ ${formData.message}
             </AnimatePresence>
           </div>
 
-          {/* Right Column: Info */}
-          <div className="lg:col-span-5 flex flex-col gap-8 text-left">
-            <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 space-y-6">
-              <h3 className="font-display text-xl font-bold text-pearl pb-3 border-b border-pearl/10">
+          {/* Right Column: Direct Contact Info (lg:col-span-5) */}
+          <div className="lg:col-span-5 flex flex-col gap-8 text-left h-full">
+            <div className="bg-[#050c12]/80 border border-tealmint/15 rounded-3xl p-8 md:p-10 shadow-2xl premium-glow-shadow relative transition-all duration-500 hover:border-tealmint/30">
+              <div className="absolute inset-0 bg-gradient-to-b from-ocean/5 to-transparent pointer-events-none rounded-3xl" />
+              
+              <h3 className="font-display text-2xl font-bold text-pearl pb-4 border-b border-pearl/10 relative z-10 mb-6">
                 Direct Contact
               </h3>
 
-              <div className="space-y-4">
-                <div className="flex gap-4 items-center">
-                  <div className="p-3 rounded-lg bg-ocean/20 text-tealmint">
+              <div className="space-y-6 relative z-10">
+                {/* Email item */}
+                <div className="flex gap-4 items-center group cursor-pointer">
+                  <div className="p-3.5 rounded-full bg-tealmint/5 border border-tealmint/25 text-tealmint group-hover:bg-tealmint group-hover:text-navy transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-tealmint/20">
                     <Mail size={18} />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-pearl/40 uppercase tracking-widest block">Email inquiry</span>
-                    <a href="mailto:support@optimizalpha.com" className="text-sm font-mono text-tealmint hover:underline">
+                    <span className="text-[9px] font-mono text-pearl/40 uppercase tracking-widest block font-bold group-hover:text-tealmint/60 transition-colors">
+                      [email_inquiry]
+                    </span>
+                    <a href="mailto:support@optimizalpha.com" className="text-sm font-mono text-tealmint hover:underline font-semibold block mt-0.5">
                       support@optimizalpha.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-center">
-                  <div className="p-3 rounded-lg bg-ocean/20 text-tealmint">
+                {/* Web item */}
+                <div className="flex gap-4 items-center group cursor-pointer">
+                  <div className="p-3.5 rounded-full bg-tealmint/5 border border-tealmint/25 text-tealmint group-hover:bg-tealmint group-hover:text-navy transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-tealmint/20">
                     <Globe size={18} />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-pearl/40 uppercase tracking-widest block">Web platform</span>
-                    <span className="text-sm font-mono text-pearl">optimizalpha.com</span>
+                    <span className="text-[9px] font-mono text-pearl/40 uppercase tracking-widest block font-bold group-hover:text-tealmint/60 transition-colors">
+                      [web_platform]
+                    </span>
+                    <span className="text-sm font-mono text-pearl font-semibold block mt-0.5">optimizalpha.com</span>
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-center">
-                  <div className="p-3 rounded-lg bg-ocean/20 text-tealmint">
+                {/* Location item */}
+                <div className="flex gap-4 items-center group cursor-pointer">
+                  <div className="p-3.5 rounded-full bg-tealmint/5 border border-tealmint/25 text-tealmint group-hover:bg-tealmint group-hover:text-navy transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-tealmint/20">
                     <MapPin size={18} />
                   </div>
                   <div>
-                    <span className="text-[10px] font-mono text-pearl/40 uppercase tracking-widest block">Locations</span>
-                    <span className="text-sm font-mono text-pearl">India (HQ serving APAC & Middle East)</span>
+                    <span className="text-[9px] font-mono text-pearl/40 uppercase tracking-widest block font-bold group-hover:text-tealmint/60 transition-colors">
+                      [locations]
+                    </span>
+                    <span className="text-sm font-mono text-pearl font-semibold block mt-0.5">India (HQ serving APAC & ME)</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-pearl/10 flex justify-between items-center">
-                <span className="text-xs text-pearl/50 font-mono">Follow on professional channels</span>
+              {/* LinkedIn follow ribbon */}
+              <div className="pt-6 border-t border-pearl/10 flex justify-between items-center group mt-8 relative z-10">
+                <span className="text-xs text-pearl/50 font-mono group-hover:text-pearl/75 transition-colors">Follow on professional channels</span>
                 <a
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 rounded-full border border-pearl/10 hover:border-tealmint hover:text-tealmint transition-colors duration-200"
+                  className="p-2.5 rounded-full border border-pearl/10 hover:border-tealmint hover:text-tealmint bg-tealmint/5 hover:bg-tealmint/15 transition-all duration-300 hover:scale-110 shadow-md"
                 >
                   <Linkedin size={16} />
                 </a>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
-    </div>
+    </SpotlightEffect>
   );
 }
