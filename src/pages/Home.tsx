@@ -27,9 +27,9 @@ export default function Home({ onNavigate }: HomeProps) {
 
   // Typewriter taglines
   const phrases = [
-    "Attribution analytics built for family offices.",
-    "Exposure intelligence for private banks.",
-    "Multi-asset performance. Institutional precision."
+    "The command centre for multi-asset portfolios.",
+    "Your golden source of truth for investment data.",
+    "Take your data from fragmented to foundational."
   ];
   const [currentPhraseIdx, setCurrentPhraseIdx] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
@@ -63,49 +63,49 @@ export default function Home({ onNavigate }: HomeProps) {
     {
       icon: <TrendingUp className="text-tealmint" size={24} />,
       title: "Performance Attribution",
-      desc: "Brinson-Fachler model. Drill from total portfolio down to individual security level. Identify exactly where alpha was generated — or lost — across sectors, geographies, and managers.",
+      desc: "Brinson-Fachler and Brinson-Hood-Beebower models. Drill from consolidated multi-family structures down to individual security attribution. Identify exactly where alpha was generated or lost across sectors, asset classes and active managers.",
       pill: "Attribute Edge"
     },
     {
       icon: <PieChart className="text-tealmint" size={24} />,
       title: "Asset Allocation Analysis",
-      desc: "Interactive multi-level breakdown across asset classes, sub-asset classes, and entity hierarchies. Know your concentration exposures before your investors do.",
+      desc: "Unite all liquid and alternative asset classes. High-fidelity multi-level breakdowns across traditional equities, private markets, real estate, and physical collections.",
       pill: "Exposures"
     },
     {
       icon: <Network className="text-tealmint" size={24} />,
       title: "Exposure Tracking",
-      desc: "Time-series exposure trends across GICS sectors, geographies, currencies, and custom structures. Identify concentration boundaries accurately in seconds.",
+      desc: "Track aggregate look-through exposures across geographies, GICS sectors, currencies and custom attributes. Identify concentration boundaries across complex holding networks in seconds.",
       pill: "Trends"
     },
     {
       icon: <Activity className="text-tealmint" size={24} />,
       title: "Drawdown & Risk Analytics",
-      desc: "Rolling returns, maximum drawdown, recovery speed, Sharpe ratio, VaR, and 15+ risk metrics computed server-side with strict audit trials.",
+      desc: "Server-side calculations for rolling returns, max drawdown, recovery velocity, Sharpe ratio, and Value-at-Risk (VaR), backed by a complete, audit-ready data lineage.",
       pill: "Risk Audit"
     },
     {
       icon: <Layers className="text-tealmint" size={24} />,
       title: "Private Equity Intelligence",
-      desc: "IRR, TVPI, DPI, RVPI by vintage year. Concentration analysis, realization tracking, and forward liquidity modeling. The PE views your IC actually requests.",
+      desc: "Granular private market analytics tracking Net IRR, TVPI, DPI, and RVPI by vintage year. Model capital pacing, future drawdowns, and forward liquidity horizons with institutional precision.",
       pill: "PE Vintage"
     },
     {
       icon: <Award className="text-tealmint" size={24} />,
-      title: "Mutual Fund Analysis",
-      desc: "Peer comparison, custom benchmark attribution, what-if scenario modeling, and dynamic investment committee report assembly.",
+      title: "Mutual Fund & Mandate Analysis",
+      desc: "Perform peer group benchmarking, manager analysis, and what-if scenario testing. Automatically compile comprehensive investment committee reports and client presentation decks.",
       pill: "IC Reports"
     },
     {
       icon: <MessageSquare className="text-tealmint" size={24} />,
-      title: "AI Investment Chatbot",
-      desc: "Ask your portfolio anything in plain English. Query performance metrics, exposure thresholds, and benchmark deviations conversationally with absolute isolation.",
+      title: "AI Portfolio Analyst",
+      desc: "Securely query your portfolio data in plain English. Analyze exposures, historical performances and benchmark deviations conversationally with zero data leakage risk.",
       pill: "LLM Powered"
     },
     {
       icon: <ShieldCheck className="text-tealmint" size={24} />,
-      title: "Multi-Tenant Architecture",
-      desc: "Schema-level client isolation. Role-based granular entitlements. White-labeling domains. Architected for firms with zero data leakage risk.",
+      title: "Enterprise-Wide Security",
+      desc: "Strict schema-level tenant isolation, custom whitelabeling, and role-based granular entitlements. Certified secure data sharing engineered for private banks, trust companies, and family offices.",
       pill: "Enterprise Sec"
     }
   ];
@@ -113,22 +113,23 @@ export default function Home({ onNavigate }: HomeProps) {
   return (
     <div className="bg-navy overflow-hidden">
       {/* 1. HERO SECTION */}
-      <SpotlightEffect className="relative min-h-[95vh] pt-32 pb-24 flex items-center justify-center">
+      <SpotlightEffect className="relative min-h-[95vh] pt-32 pb-24 flex items-center justify-center bg-financial-grid border-b border-tealmint/10">
         {/* Background blobs */}
         <div className="absolute top-1/4 left-1/10 w-96 h-96 rounded-full bg-ocean/10 blur-[120px] animate-aurora-1" />
         <div className="absolute bottom-1/5 right-1/10 w-96 h-96 rounded-full bg-tealmint/8 blur-[100px] animate-aurora-2" />
+        <div className="absolute top-10 right-1/4 w-80 h-80 rounded-full bg-ocean/5 blur-[100px] pointer-events-none" />
 
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Hero Left Content */}
           <div className="lg:col-span-6 flex flex-col items-start text-left gap-6 relative z-10">
             {/* Pill Eyebrow */}
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tealmint/10 border border-tealmint/25">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-tealmint/10 border border-tealmint/25 backdrop-blur-md">
               <span className="w-1.5 h-1.5 rounded-full bg-tealmint animate-pulse" />
               <span className="font-mono text-xs font-semibold text-tealmint uppercase tracking-wider">
                 Portfolio Intelligence Platform
               </span>
             </div>
-
+ 
             {/* H1 Display */}
             <h1 className="font-display text-6xl md:text-8xl font-bold tracking-tight text-pearl leading-none">
               See Every Edge.<br />
@@ -136,52 +137,52 @@ export default function Home({ onNavigate }: HomeProps) {
                 Own Every Alpha.
               </span>
             </h1>
-
+ 
             {/* Typewriter Subheadline */}
             <div className="h-8 md:h-10 flex items-center">
               <p className="font-mono text-sm md:text-base text-tealmint typewriter-cursor font-medium">
                 {displayedText}
               </p>
             </div>
-
+ 
             {/* Paragraph Body */}
-            <p className="text-base text-pearl/80 leading-relaxed max-w-xl">
-              OptimizAlpha gives investment teams a single, unified lens across every asset class — from equities and private equity to mutual funds and alternatives — so you spend less time aggregating spreadsheets and more time generating alpha.
+            <p className="text-sm md:text-base text-pearl/70 leading-relaxed max-w-xl">
+              OptimizAlpha provides family offices, wealth managers and private banks with a golden source of truth for their investment data. Aggregate and standardize complex multi-asset portfolios - across traditional and alternative investments - so your team spends less time building spreadsheets and more time generating investment value.
             </p>
-
+ 
             {/* CTA buttons */}
             <div className="flex flex-wrap items-center gap-4 mt-2">
               <button 
                 onClick={() => onNavigate('/contact')}
-                className="btn-glow px-8 py-3.5 rounded-full bg-ocean border border-tealmint/30 text-pearl font-semibold hover:text-navy hover:bg-tealmint transition-all duration-300 shadow-xl shadow-ocean/20 text-sm"
+                className="btn-glow px-8 py-3.5 rounded-full bg-ocean border border-tealmint/30 text-pearl font-semibold hover:text-navy hover:bg-tealmint transition-all duration-300 shadow-xl shadow-ocean/20 text-sm cursor-pointer"
               >
                 Request a Demo →
               </button>
               <a 
                 href="#platform"
-                className="px-8 py-3.5 rounded-full border border-tealmint/30 text-pearl/90 font-semibold hover:border-tealmint hover:text-tealmint transition-colors duration-300 text-sm"
+                className="px-8 py-3.5 rounded-full border border-tealmint/30 text-pearl/90 font-semibold hover:border-tealmint hover:text-tealmint transition-colors duration-300 text-sm cursor-pointer"
               >
                 View Platform
               </a>
             </div>
-
+ 
           </div>
-
+ 
           {/* Hero Right Content (Floating Frame + Overlays) */}
           <div className="lg:col-span-6 relative flex justify-center items-center">
             {/* Spotlight Glow Behind Mockup */}
             <div className="absolute w-[450px] h-[450px] rounded-full bg-tealmint/10 blur-[90px] -z-10" />
-
+ 
             <div className="w-full animate-float max-w-lg md:max-w-none">
               <InteractiveDashboard isHero={true} />
             </div>
-
+ 
             {/* Floating Metric Card 1 */}
             <div className="absolute -top-6 -left-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float-slow hidden lg:block hover:border-tealmint/50 transition-colors duration-300">
               <span className="text-[9px] font-mono text-pearl/50 tracking-wider uppercase block">ALPHA GENERATED</span>
               <span className="text-base font-mono font-bold text-tealmint">+3.81% YTD</span>
             </div>
-
+ 
             {/* Floating Metric Card 2 */}
             <div className="absolute bottom-8 -right-10 bg-navy/85 border border-tealmint/25 backdrop-blur-md rounded-xl p-4 shadow-2xl shadow-navy/50 animate-float hidden lg:block hover:border-tealmint/50 transition-colors duration-300">
               <span className="text-[9px] font-mono text-pearl/50 tracking-wider uppercase block">MAX DRAWDOWN</span>
@@ -194,19 +195,29 @@ export default function Home({ onNavigate }: HomeProps) {
 
 
       {/* 3. PLATFORM SECTION */}
-      <section id="platform" className="py-24 max-w-[1600px] mx-auto px-6 md:px-12 border-b border-tealmint/10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-pearl">
-            A platform your investment team will actually use.
+      <section id="platform" className="py-24 relative max-w-[1600px] mx-auto px-6 md:px-12 border-b border-tealmint/10">
+        {/* Deep background radial spotlight glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full bg-ocean/5 blur-[150px] pointer-events-none" />
+
+        <div className="text-center max-w-3xl mx-auto mb-16 relative z-10">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-tealmint/5 border border-tealmint/20 mb-4 backdrop-blur-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-tealmint/60" />
+            <span className="font-mono text-[9px] font-semibold text-tealmint uppercase tracking-widest">
+              Command Centre
+            </span>
+          </div>
+          <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-pearl leading-tight">
+            The ultimate command centre <br />
+            <span className="bg-gradient-to-r from-ocean to-tealmint bg-clip-text text-transparent">for multi-asset portfolios.</span>
           </h2>
-          <p className="text-sm md:text-base text-pearl/70 leading-relaxed mt-4">
-            Toggle between raw asset exposures and granular client hierarchies dynamically. Verify attribution across any benchmark standard in seconds.
+          <p className="text-sm md:text-base text-pearl/70 leading-relaxed mt-6 max-w-2xl mx-auto">
+            Unite all your liquid and alternative asset data in one secure, unified platform. Monitor traditional equities alongside private markets, real estate, and physical holdings with institutional-grade attribution and real-time liquidity forecasting.
           </p>
         </div>
 
         {/* Dynamic Mockup Preview Showcase */}
-        <div className="bg-[#060c12] border border-tealmint/10 rounded-2xl p-6 md:p-8 shadow-2xl relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-ocean/5 to-transparent pointer-events-none rounded-2xl" />
+        <div className="bg-[#050c12] border border-tealmint/15 rounded-3xl p-6 md:p-8 shadow-2xl premium-glow-shadow relative z-10 transition-all duration-500 hover:border-tealmint/30">
+          <div className="absolute inset-0 bg-gradient-to-b from-ocean/5 to-transparent pointer-events-none rounded-3xl" />
           <InteractiveDashboard />
         </div>
       </section>
@@ -355,7 +366,7 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Onboarding Roadmap</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
-            From raw data to decisive insight — in hours, not months.
+            From raw data to decisive insight - in hours, not months.
           </h2>
         </div>
 
@@ -369,9 +380,9 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="w-10 h-10 rounded-full bg-ocean text-pearl font-mono text-sm font-bold flex items-center justify-center border border-tealmint/30 shadow-md">
               01
             </div>
-            <h3 className="font-display text-xl font-bold text-pearl">Onboard</h3>
+            <h3 className="font-display text-xl font-bold text-pearl">Consolidate</h3>
             <p className="text-sm text-pearl/70 leading-relaxed">
-              We ingest your multi-asset data via CSV upload, direct database schema integration, or custom custodian API feeds. Multi-currency mapping is resolved immediately.
+              Securely ingest portfolio data from any source (APIs, custodian datafeeds, Excel, CSV, or SWIFT). We map, clean, and standardize multi-currency transaction records into a single trusted ledger.
             </p>
           </div>
 
@@ -382,7 +393,7 @@ export default function Home({ onNavigate }: HomeProps) {
             </div>
             <h3 className="font-display text-xl font-bold text-pearl">Analyze</h3>
             <p className="text-sm text-pearl/70 leading-relaxed">
-              The analytics layer automatically computes active attribution models (Brinson-Fachler), vintage drawdown percentages, PE IRR curves, and concentration exposures.
+              The quantitative engine automatically calculates Brinson attribution models, rolling risk metrics, private market vintage performance (IRR, TVPI), and looking-through exposures.
             </p>
           </div>
 
@@ -391,9 +402,9 @@ export default function Home({ onNavigate }: HomeProps) {
             <div className="w-10 h-10 rounded-full bg-ocean text-pearl font-mono text-sm font-bold flex items-center justify-center border border-tealmint/30 shadow-md">
               03
             </div>
-            <h3 className="font-display text-xl font-bold text-pearl">Decide</h3>
+            <h3 className="font-display text-xl font-bold text-pearl">Report & Decide</h3>
             <p className="text-sm text-pearl/70 leading-relaxed">
-              Your investment committee gains beautiful, interactive visual dashboard grids, whitelabel reporting formats, and an conversational AI analyst assistant.
+              Generate client-ready multi-asset reports in one click. Equip your investment committee and relationship managers with interactive dashboards, automated bookkeeping feeds, and our AI portfolio analyst.
             </p>
           </div>
         </div>
@@ -418,9 +429,9 @@ export default function Home({ onNavigate }: HomeProps) {
           <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 flex flex-col justify-between hover:border-tealmint/30 transition-colors">
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs text-tealmint uppercase tracking-widest">Starter</span>
-              <h3 className="font-display text-2xl font-bold text-pearl">Foundation</h3>
+              <h3 className="font-display text-2xl font-bold text-pearl">Foundational Analytics</h3>
               <p className="text-xs text-pearl/65 leading-relaxed mt-2">
-                Ideal for boutique wealth managers and single-entity structures looking to establish core analytics capabilities.
+                Robust multi-asset data consolidation and performance reporting built for single-family offices starting their digital transition.
               </p>
               <ul className="mt-6 space-y-2.5 font-mono text-[11px] text-pearl/80">
                 <li>• Single-entity portfolio monitoring</li>
@@ -445,16 +456,16 @@ export default function Home({ onNavigate }: HomeProps) {
             </span>
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs text-tealmint uppercase tracking-widest mt-2">Growth</span>
-              <h3 className="font-display text-2xl font-bold text-pearl">Professional</h3>
+              <h3 className="font-display text-2xl font-bold text-pearl">Command Centre</h3>
               <p className="text-xs text-pearl/70 leading-relaxed mt-2">
-                Comprehensive analytics engine designed for family offices and institutions handling complex multi-entity allocations.
+                Advanced portfolio analytics, look-through exposures, and private equity intelligence designed for family offices and institutions handling complex multi-entity allocations.
               </p>
               <ul className="mt-6 space-y-2.5 font-mono text-[11px] text-pearl/85">
                 <li>• Multi-entity hierarchical reporting</li>
                 <li>• Private equity vintage intelligence</li>
                 <li>• Active Brinson-Fachler attribution</li>
                 <li>• Custom user preference layouts</li>
-                <li>• API ingestion integrations</li>
+                <li>• API Ingestion integrations</li>
               </ul>
             </div>
             <button 
@@ -469,9 +480,9 @@ export default function Home({ onNavigate }: HomeProps) {
           <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 flex flex-col justify-between hover:border-tealmint/30 transition-colors">
             <div className="flex flex-col gap-4">
               <span className="font-mono text-xs text-tealmint uppercase tracking-widest">Enterprise</span>
-              <h3 className="font-display text-2xl font-bold text-pearl">Institutional</h3>
+              <h3 className="font-display text-2xl font-bold text-pearl">Institutional Command</h3>
               <p className="text-xs text-pearl/65 leading-relaxed mt-2">
-                Enterprise solution equipped with complete white-labeling capability, dedicated onboarding resources, and custom engineering.
+                Complete white-labeling, automated custodian datafeeds, custom API access, and Postgres-level data isolation for private banks, trust companies, and large institutional asset managers.
               </p>
               <ul className="mt-6 space-y-2.5 font-mono text-[11px] text-pearl/80">
                 <li>• Full whitelabel domain authorization</li>
@@ -491,25 +502,27 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* 9. FINAL CTA SECTION */}
-      <section className="relative py-28 bg-[#020508] text-center border-t border-tealmint/10 overflow-hidden">
-        {/* Glow blobs */}
-        <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-ocean/15 blur-[120px] pointer-events-none" />
+      {/* 9. FINAL CTA CARD */}
+      <section className="py-24 max-w-[1600px] mx-auto px-6 md:px-12">
+        <div className="relative py-20 md:py-24 px-6 md:px-12 bg-[#050c12] border border-tealmint/15 rounded-3xl text-center overflow-hidden shadow-2xl shadow-[#00050c]/50">
+          {/* Glow blobs inside the card */}
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-ocean/20 blur-[120px] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center gap-6">
-          <h2 className="font-display text-5xl md:text-7xl font-bold text-pearl leading-tight">
-            Ready to see your portfolio clearly?
-          </h2>
-          <p className="text-base text-pearl/75 leading-relaxed max-w-xl">
-            Join investment teams across Asia and the Middle East who've made OptimizAlpha their institutional portfolio intelligence layer.
-          </p>
+          <div className="max-w-3xl mx-auto relative z-10 flex flex-col items-center gap-6">
+            <h2 className="font-display text-5xl md:text-7xl font-bold text-pearl leading-tight">
+              Ready to see your portfolio clearly?
+            </h2>
+            <p className="text-sm md:text-base text-pearl/75 leading-relaxed max-w-xl">
+              Join investment teams across Asia and the Middle East who've made OptimizAlpha their institutional portfolio intelligence layer.
+            </p>
 
-          <button 
-            onClick={() => onNavigate('/contact')}
-            className="btn-glow px-10 py-4 mt-4 rounded-full bg-ocean border border-tealmint/30 text-pearl font-bold hover:bg-tealmint hover:text-navy transition-all duration-300 shadow-xl shadow-ocean/30 text-sm"
-          >
-            Schedule a Demo →
-          </button>
+            <button 
+              onClick={() => onNavigate('/contact')}
+              className="btn-glow px-10 py-4 mt-4 rounded-full bg-ocean border border-tealmint/30 text-pearl font-bold hover:bg-tealmint hover:text-navy transition-all duration-300 shadow-xl shadow-ocean/30 text-sm"
+            >
+              Schedule a Demo →
+            </button>
+          </div>
         </div>
       </section>
     </div>

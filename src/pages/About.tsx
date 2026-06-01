@@ -5,18 +5,18 @@ export default function About() {
   const missionCards = [
     {
       icon: <Target className="text-tealmint" size={24} />,
-      title: "Accuracy First",
-      desc: "Every metric, return, and attribution factor is computed directly from source transaction data, complete with a comprehensive, click-through audit trail for compliance teams."
+      title: "Trusted Data Foundation",
+      desc: "Access reliable, governed, and enriched portfolio data ready for advanced investment analytics and AI workflows. Complete click-through audit trails for compliance."
     },
     {
       icon: <Cpu className="text-tealmint" size={24} />,
-      title: "Built to Scale",
-      desc: "Architected on a multi-tenant, fully schema-isolated database layer using postgres. Your data is isolated physically, never co-mingled, and encrypted at all points."
+      title: "Uncompromising Data Governance",
+      desc: "Architected on Postgres with schema-level client isolation. Securely ingest, synchronize, and distribute data with absolute privacy and zero co-mingling."
     },
     {
       icon: <Users2 className="text-tealmint" size={24} />,
-      title: "Partner, Not Vendor",
-      desc: "We do not dump code and leave. Our engineering and quant teams handle the entire onboard mapping process, training your staff and iterating on your custom layouts."
+      title: "Collaborative Onboarding Integration",
+      desc: "We don't just supply software; we manage the transition. Our engineering and quantitative analysts build custom ingestion pipelines and map legacy custodian histories."
     }
   ];
 
@@ -41,7 +41,7 @@ export default function About() {
         {/* Narrative columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto mt-16 leading-relaxed text-pearl/80">
           <p className="text-base">
-            OptimizAlpha was born from a simple, persistent frustration: world-class investment teams, managing hundreds of millions in capital, were spending more time wrangling broken spreadsheets and manual reports than making actual investment decisions. Our founders — veterans of asset management, quantitative finance, and enterprise software — set out to build the analytics layer they always wished existed.
+            OptimizAlpha was born from a simple, persistent frustration: world-class investment teams, managing hundreds of millions in capital, were spending more time wrangling broken spreadsheets and manual reports than making actual investment decisions. Our founders, veterans of asset management, quantitative finance, and enterprise software, set out to build the analytics layer they always wished existed.
           </p>
           <p className="text-base">
             Today, OptimizAlpha serves family offices, boutique private banks, and asset managers across the Asia-Pacific region and the Middle East. We obsess over transaction data accuracy, UI dashboard clarity, and the kind of analytical depth that separates serious investment platforms from superficial dashboards dressed up as quantitative tools.
@@ -68,31 +68,46 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <SpotlightEffect opacity={0.12} className="bg-[#03060a] py-20 border-y border-tealmint/10">
-        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Our Foundation</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
-              Values We Defend Daily
-            </h2>
-          </div>
+      <section className="max-w-[1600px] mx-auto px-6 md:px-12 mb-24 relative z-10">
+        <SpotlightEffect 
+          opacity={0.15} 
+          className="relative py-20 px-6 md:px-12 bg-[#050c12] border border-tealmint/15 rounded-3xl overflow-hidden shadow-2xl shadow-[#00050c]/50 bg-financial-grid transition-all duration-500 hover:border-tealmint/30"
+        >
+          {/* Internal neon backing glow */}
+          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-ocean/15 blur-[120px] pointer-events-none" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((val, idx) => (
-              <div
-                key={idx}
-                className="glass-card border border-tealmint/15 rounded-xl p-6 text-center flex flex-col items-center gap-3"
-              >
-                <div className="p-3 rounded-full bg-tealmint/10 border border-tealmint/25 text-tealmint">
-                  {val.icon}
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-3 border border-tealmint/25 bg-tealmint/5 rounded-full px-4 py-1.5 w-max mx-auto shadow-md">
+                Our Foundation
+              </span>
+              <h2 className="font-display text-5xl md:text-6xl font-bold text-pearl leading-none mt-2 animate-fadeIn">
+                Values We Defend Daily
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {values.map((val, idx) => (
+                <div
+                  key={idx}
+                  className="group relative bg-navy/60 border border-tealmint/15 hover:border-tealmint/60 rounded-2xl p-6 text-center flex flex-col items-center gap-4 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-tealmint/5 cursor-pointer"
+                >
+                  {/* Subtle quant serial card indicator */}
+                  <span className="absolute top-4 right-4 font-mono text-[8px] text-tealmint/30 group-hover:text-tealmint/60 transition-colors">
+                    [0{idx + 1}]
+                  </span>
+
+                  <div className="p-3.5 rounded-full bg-tealmint/5 border border-tealmint/25 text-tealmint group-hover:bg-tealmint group-hover:text-navy transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-tealmint/20">
+                    {val.icon}
+                  </div>
+                  <h4 className="font-display text-xl font-bold text-pearl mt-2 group-hover:text-tealmint transition-colors">{val.label}</h4>
+                  <p className="text-xs text-pearl/70 leading-relaxed mt-1 group-hover:text-pearl/90 transition-colors">{val.desc}</p>
                 </div>
-                <h4 className="font-display text-lg font-semibold text-pearl mt-1">{val.label}</h4>
-                <p className="text-xs text-pearl/70 leading-relaxed">{val.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </SpotlightEffect>
+        </SpotlightEffect>
+      </section>
 
       {/* Office Locations */}
       <section className="max-w-[1600px] mx-auto px-6 md:px-12 mt-24">

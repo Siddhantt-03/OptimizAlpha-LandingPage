@@ -161,8 +161,8 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
                   <span className="text-tealmint font-mono font-bold uppercase text-[7px] tracking-wider block mb-1">Advanced Contribution Insights</span>
                   <ul className="font-mono text-[7px] text-pearl/70 space-y-1 list-disc pl-3 leading-relaxed">
                     <li>Equity shows strongest alpha generation with +2.050% contribution gap vs. benchmark.</li>
-                    <li>Alpha Tech has highest contribution efficiency (0.180x) — strong return per unit of weight.</li>
-                    <li>Contribution dispersion is 0.427% — returns are concentrated in few holdings.</li>
+                    <li>Alpha Tech has highest contribution efficiency (0.180x) - strong return per unit of weight.</li>
+                    <li>Contribution dispersion is 0.427% - returns are concentrated in few holdings.</li>
                   </ul>
                 </div>
               </div>

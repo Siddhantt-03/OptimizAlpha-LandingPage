@@ -179,3 +179,16 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Financial grid overlay pattern for institutional aesthetic */
+.bg-financial-grid {
+  background-image: 
+    linear-gradient(to right, rgba(100, 204, 197, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(100, 204, 197, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Premium radial backing neon shadow for dashboard mockups */
+.premium-glow-shadow {
+  box-shadow: 0 0 100px -15px rgba(23, 107, 135, 0.22);
+}

@@ -151,7 +151,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
                 </div>
                 
                 <div className="flex items-center justify-between text-xs text-pearl/40 px-2">
-                  <span>Aman (CEO)</span>
+                  <span>Joe (CEO)</span>
                   <LogOut size={12} className="hover:text-red-400 cursor-pointer" />
                 </div>
               </div>
@@ -502,7 +502,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
                   {/* Drawdowns SVG */}
                   <div className="bg-[#0b141e] border border-tealmint/10 rounded-xl p-5 flex flex-col justify-between shadow-md">
                     <div>
-                      <h4 className="text-sm font-semibold text-pearl">Portfolio Drawdown — Rolling 12 Months</h4>
+                      <h4 className="text-sm font-semibold text-pearl">Portfolio Drawdown - Rolling 12 Months</h4>
                       <span className="text-[10px] font-mono text-pearl/40">Peak-to-valley drawdown curve</span>
                     </div>
 

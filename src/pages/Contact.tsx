@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Globe, MapPin, Linkedin, CheckCircle2, AlertCircle, Calendar } from 'lucide-react';
+import { Mail, Globe, MapPin, Linkedin, CheckCircle2, AlertCircle } from 'lucide-react';
 
 interface FormState {
   fullName: string;
@@ -24,7 +24,6 @@ export default function Contact() {
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [showCalendly, setShowCalendly] = useState(false);
 
   const validate = () => {
     const newErrors: Partial<FormState> = {};
@@ -50,19 +49,54 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      setFormData({
-        fullName: '',
-        email: '',
-        firmName: '',
-        aumRange: '',
-        role: '',
-        message: ''
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '1f0cf376-e3f1-4422-99b8-9a9b9ab20b71';
+    console.log("Web3Forms submitting with Access Key:", accessKey);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        name: formData.fullName,
+        email: formData.email,
+        subject: `New Lead: ${formData.firmName} (${formData.role})`,
+        message: `
+Full Name: ${formData.fullName}
+Work Email: ${formData.email}
+Firm Name: ${formData.firmName}
+AUM Range: ${formData.aumRange}
+Role: ${formData.role}
+
+Message:
+${formData.message}
+        `
+      })
+    })
+      .then(async (response) => {
+        if (response.ok) {
+          setIsSuccess(true);
+          setFormData({
+            fullName: '',
+            email: '',
+            firmName: '',
+            aumRange: '',
+            role: '',
+            message: ''
+          });
+        } else {
+          const data = await response.json();
+          alert(`Error (Key: ${accessKey}): ` + (data.message || 'Failed to submit. Please contact support@optimizalpha.com directly.'));
+        }
+      })
+      .catch(() => {
+        alert(`Network error (Key: ${accessKey}). Please contact support@optimizalpha.com directly.`);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
       });
-    }, 1500);
   };
 
   return (
@@ -73,13 +107,13 @@ export default function Contact() {
           <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-ocean/10 blur-[100px] pointer-events-none" />
           
           <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-3">
-            Institutional Access
+            Institutional Portfolio Intelligence
           </span>
           <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-pearl mb-6">
-            Let's talk about your portfolio.
+            Let's establish your golden source of truth.
           </h1>
           <p className="text-sm md:text-base text-pearl/70 max-w-2xl mx-auto leading-relaxed">
-            Whether you're evaluating analytics platforms, want a deep product walkthrough, or have specific customization requirements — our quantitative architects are here to support your team.
+            Connect with our advisory quants to discover how OptimizAlpha can consolidate your multi-asset portfolio, automate custodian feeds, and elevate your analytical command centre.
           </p>
         </section>
 
@@ -252,7 +286,7 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Info */}
-          <div className="lg:col-span-5 flex flex-col gap-8 text-left h-full justify-between">
+          <div className="lg:col-span-5 flex flex-col gap-8 text-left">
             <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 space-y-6">
               <h3 className="font-display text-xl font-bold text-pearl pb-3 border-b border-pearl/10">
                 Direct Contact
@@ -304,81 +338,8 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-
-            {/* Calendly Teaser */}
-            <div className="bg-gradient-to-br from-ocean/15 to-navy border border-tealmint/15 rounded-2xl p-6.5">
-              <div className="flex gap-4">
-                <div className="p-3 bg-tealmint/10 text-tealmint rounded-xl shrink-0 h-fit">
-                  <Calendar size={20} />
-                </div>
-                <div>
-                  <h4 className="font-display text-lg font-bold text-pearl">Prefer to skip the form?</h4>
-                  <p className="text-xs text-pearl/70 mt-1 leading-relaxed">
-                    Select a slot directly on our team's calendar for a live 30-minute quantitative attribution demonstration.
-                  </p>
-                  <button 
-                    onClick={() => setShowCalendly(true)}
-                    className="mt-4 px-5 py-2.5 rounded-full bg-tealmint text-navy font-bold text-xs hover:bg-pearl transition-all duration-300 shadow-md shadow-tealmint/10"
-                  >
-                    Schedule Now
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-
-        {/* Dynamic Modal Calendly Simulator */}
-        <AnimatePresence>
-          {showCalendly && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-navy/95 backdrop-blur-sm flex items-center justify-center p-6"
-            >
-              <motion.div
-                initial={{ scale: 0.95 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.95 }}
-                className="bg-[#050c12] border border-tealmint/20 rounded-2xl max-w-lg w-full p-8 text-center space-y-6"
-              >
-                <div className="w-12 h-12 bg-tealmint/10 text-tealmint rounded-full flex items-center justify-center mx-auto">
-                  <Calendar size={24} />
-                </div>
-                <div className="space-y-2">
-                  <h3 className="font-display text-2xl font-bold text-pearl">Book 30-Min Demo</h3>
-                  <p className="text-xs text-pearl/70 leading-relaxed">
-                    Select a convenient direct consultation slot. A technical lead will guide your team through portfolio mappings.
-                  </p>
-                </div>
-
-                {/* Calendar Days Selector Mock */}
-                <div className="grid grid-cols-5 gap-2 font-mono text-xs">
-                  {['Mon 25', 'Tue 26', 'Wed 27', 'Thu 28', 'Fri 29'].map((day) => (
-                    <button
-                      key={day}
-                      onClick={() => {
-                        alert(`Demo booked for May ${day.split(' ')[1]}, 2026. A calendar invitation has been dispatched.`);
-                        setShowCalendly(false);
-                      }}
-                      className="py-2.5 rounded border border-tealmint/25 hover:bg-tealmint hover:text-navy transition-colors font-semibold"
-                    >
-                      {day}
-                    </button>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => setShowCalendly(false)}
-                  className="font-mono text-[10px] uppercase text-pearl/50 hover:text-tealmint tracking-widest block pt-2 mx-auto"
-                >
-                  Cancel and close
-                </button>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </div>
   );
