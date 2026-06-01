@@ -4,7 +4,6 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
 import About from './pages/About';
-import Team from './pages/Team';
 import Faq from './pages/Faq';
 import Contact from './pages/Contact';
 
@@ -33,7 +32,6 @@ export default function App() {
       <main className="flex-grow">
         {currentPath === '/' && <Home onNavigate={navigateTo} />}
         {currentPath === '/about' && <About />}
-        {currentPath === '/team' && <Team />}
         {currentPath === '/faq' && <Faq />}
         {currentPath === '/contact' && <Contact />}
       </main>

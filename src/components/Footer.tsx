@@ -1,4 +1,4 @@
-import { ShieldCheck, Linkedin, Twitter, ArrowUp } from 'lucide-react';
+import { Linkedin, Twitter, ArrowUp } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
@@ -118,12 +118,6 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
                 About Us
               </button>
               <button
-                onClick={() => handleItemClick('/team')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Our Team
-              </button>
-              <button
                 onClick={() => handleItemClick('/about')}
                 className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
               >
@@ -181,11 +175,6 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
           </div>
 
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-1.5 text-xs font-mono text-tealmint px-3 py-1 rounded-full bg-tealmint/10 border border-tealmint/20">
-              <ShieldCheck size={14} />
-              <span>SOC 2 Compliant Certified</span>
-            </div>
-
             <button
               onClick={handleScrollToTop}
               className="p-2 rounded-full border border-pearl/10 hover:border-tealmint hover:text-tealmint transition-all duration-300 bg-ocean/5 text-pearl/65 group"

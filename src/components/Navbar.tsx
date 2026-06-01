@@ -27,7 +27,6 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
     { label: 'Platform', path: '/#platform' },
     { label: 'Features', path: '/#features' },
     { label: 'About', path: '/about' },
-    { label: 'Team', path: '/team' },
     { label: 'FAQ', path: '/faq' },
     { label: 'Contact', path: '/contact' },
   ];
@@ -99,12 +98,6 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={() => handleItemClick('/contact')}
-              className="px-4 py-2 text-sm font-medium text-pearl hover:text-tealmint transition-colors duration-300"
-            >
-              Log In
-            </button>
-            <button
-              onClick={() => handleItemClick('/contact')}
               className="btn-glow px-6 py-2.5 rounded-full text-sm font-semibold bg-ocean border border-tealmint/30 text-pearl hover:text-navy hover:bg-tealmint transition-all duration-300 shadow-md shadow-ocean/20"
             >
               Request Demo →
@@ -137,12 +130,6 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           </div>
 
           <div className="mt-16 flex flex-col gap-4 max-w-sm mx-auto w-full">
-            <button
-              onClick={() => handleItemClick('/contact')}
-              className="py-3 rounded-full border border-pearl/20 text-pearl font-medium hover:bg-pearl/5 transition-colors"
-            >
-              Log In
-            </button>
             <button
               onClick={() => handleItemClick('/contact')}
               className="py-3 rounded-full bg-ocean text-pearl font-semibold hover:bg-tealmint hover:text-navy transition-all duration-300 shadow-lg shadow-ocean/30"

@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
 import { 
   TrendingUp, 
   Layers, 
@@ -16,43 +16,7 @@ import SpotlightEffect from '../components/SpotlightEffect';
 import FeatureShowcase from '../components/FeatureShowcase';
 
 
-interface CounterProps {
-  value: number;
-  suffix?: string;
-}
 
-function Counter({ value, suffix = '' }: CounterProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (isInView) {
-      let start = 0;
-      const end = value;
-      const duration = 2000;
-      const increment = end / (duration / 16);
-      
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          clearInterval(timer);
-          setCount(end);
-        } else {
-          setCount(Math.floor(start));
-        }
-      }, 16);
-      
-      return () => clearInterval(timer);
-    }
-  }, [isInView, value]);
-
-  return (
-    <span ref={ref} className="font-mono text-tealmint text-4xl md:text-5xl font-bold">
-      {count}{suffix}
-    </span>
-  );
-}
 
 interface HomeProps {
   onNavigate: (path: string) => void;
@@ -201,12 +165,6 @@ export default function Home({ onNavigate }: HomeProps) {
               </a>
             </div>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6 border-t border-pearl/10 w-full mt-4 text-xs font-mono text-pearl/50">
-              <span className="flex items-center gap-1">🔒 SOC 2 Compliant</span>
-              <span>🏦 Family Office Grade</span>
-              <span>📊 Schema Isolated</span>
-            </div>
           </div>
 
           {/* Hero Right Content (Floating Frame + Overlays) */}
@@ -233,22 +191,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </SpotlightEffect>
 
-      {/* 2. SOCIAL PROOF BAR */}
-      <section className="bg-navy pt-8 pb-12 border-y border-tealmint/10">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-xs uppercase tracking-widest text-pearl/40 font-mono">
-            Trusted by investment teams managing $50B+ in combined AUM
-          </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-6 mt-8 opacity-60">
-            <span className="font-display font-bold text-lg md:text-xl text-pearl/80 tracking-wider">MERIDIAN FAMILY OFFICE</span>
-            <span className="font-display font-semibold text-lg md:text-xl text-pearl/80 tracking-wide">CRESTWOOD CAPITAL</span>
-            <span className="font-display font-bold text-lg md:text-xl text-pearl/80 tracking-widest">APEX WEALTH</span>
-            <span className="font-display font-medium text-lg md:text-xl text-pearl/80 tracking-wide">SUMMIT PRIVATE WEALTH</span>
-            <span className="font-display font-semibold text-lg md:text-xl text-pearl/80 tracking-widest">VALOR ASSET MANAGEMENT</span>
-          </div>
-        </div>
-      </section>
 
       {/* 3. PLATFORM SECTION */}
       <section id="platform" className="py-24 max-w-7xl mx-auto px-6 md:px-12 border-b border-tealmint/10">
@@ -405,27 +348,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* 5. METRICS / TRUST COUNTERS */}
-      <section className="py-20 bg-navy border-y border-tealmint/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-          <div className="flex flex-col gap-2">
-            <Counter value={50} suffix="B+" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-pearl/50">Assets Monitored</span>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Counter value={200} suffix="+" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-pearl/50">Client Portfolios</span>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Counter value={10} suffix="M+" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-pearl/50">Data Points Daily</span>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Counter value={20} suffix="+" />
-            <span className="font-mono text-[10px] uppercase tracking-widest text-pearl/50">Risk Metrics Computed</span>
-          </div>
-        </div>
-      </section>
+
 
       {/* 6. HOW IT WORKS */}
       <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
@@ -476,52 +399,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* 7. TESTIMONIALS */}
-      <section className="py-24 bg-[#020508] border-t border-tealmint/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Institutional Endorsements</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
-              Trusted by Sophisticated Capital
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="glass-card rounded-2xl p-8 border border-tealmint/15 relative flex flex-col justify-between">
-              <span className="text-5xl font-display text-tealmint/20 absolute top-4 left-4">“</span>
-              <p className="text-sm text-pearl/80 italic leading-relaxed pt-4 relative z-10">
-                OptimizAlpha replaced three separate tools for us. The performance attribution module alone saved our quantitative research team 15 hours of manual analysis every week.
-              </p>
-              <div className="mt-8 pt-4 border-t border-pearl/10">
-                <span className="font-mono text-[10px] text-tealmint uppercase tracking-wider block">Head of Investments</span>
-                <span className="font-display font-semibold text-sm text-pearl mt-0.5 block">Single Family Office, Dubai</span>
-              </div>
-            </div>
-
-            <div className="glass-card rounded-2xl p-8 border border-tealmint/15 relative flex flex-col justify-between">
-              <span className="text-5xl font-display text-tealmint/20 absolute top-4 left-4">“</span>
-              <p className="text-sm text-pearl/80 italic leading-relaxed pt-4 relative z-10">
-                Finally, a portfolio intelligence platform that intuitively understands how private banks handle multi-entity reporting and role entitlements. Absolutely exceptional execution.
-              </p>
-              <div className="mt-8 pt-4 border-t border-pearl/10">
-                <span className="font-mono text-[10px] text-tealmint uppercase tracking-wider block">Chief Investment Officer</span>
-                <span className="font-display font-semibold text-sm text-pearl mt-0.5 block">Boutique Private Bank, Mumbai</span>
-              </div>
-            </div>
-
-            <div className="glass-card rounded-2xl p-8 border border-tealmint/15 relative flex flex-col justify-between">
-              <span className="text-5xl font-display text-tealmint/20 absolute top-4 left-4">“</span>
-              <p className="text-sm text-pearl/80 italic leading-relaxed pt-4 relative z-10">
-                The private equity vintage module is unlike anything else we reviewed. Our investment committee reports take half the time to compile now, with complete database precision.
-              </p>
-              <div className="mt-8 pt-4 border-t border-pearl/10">
-                <span className="font-mono text-[10px] text-tealmint uppercase tracking-wider block">Senior Portfolio Manager</span>
-                <span className="font-display font-semibold text-sm text-pearl mt-0.5 block">Multi-Family Office, Singapore</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 8. PRICING TEASER */}
       <section id="pricing" className="py-24 max-w-7xl mx-auto px-6 md:px-12 border-t border-tealmint/10">
