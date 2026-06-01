@@ -40,7 +40,7 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-ocean/5 blur-[120px] pointer-events-none" />
       <div className="absolute top-0 left-0 w-[300px] h-[300px] rounded-full bg-tealmint/5 blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8 pb-16">
           {/* Logo & Tagline */}
           <div className="col-span-2 md:col-span-2 flex flex-col gap-6">

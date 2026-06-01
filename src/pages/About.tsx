@@ -30,7 +30,7 @@ export default function About() {
   return (
     <div className="bg-navy min-h-screen pt-32 pb-24">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20 text-center relative">
+      <section className="max-w-[1600px] mx-auto px-6 md:px-12 mb-20 text-center relative">
         <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-ocean/10 blur-[100px] pointer-events-none" />
         
         <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-3">Our Core Philosophy</span>
@@ -50,7 +50,7 @@ export default function About() {
       </section>
 
       {/* Mission Cards */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-24 border-t border-tealmint/10 pt-20">
+      <section className="max-w-[1600px] mx-auto px-6 md:px-12 mb-24 border-t border-tealmint/10 pt-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {missionCards.map((card, idx) => (
             <div
@@ -69,7 +69,7 @@ export default function About() {
 
       {/* Values Section */}
       <SpotlightEffect opacity={0.12} className="bg-[#03060a] py-20 border-y border-tealmint/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Our Foundation</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
@@ -95,7 +95,7 @@ export default function About() {
       </SpotlightEffect>
 
       {/* Office Locations */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mt-24">
+      <section className="max-w-[1600px] mx-auto px-6 md:px-12 mt-24">
         <div className="bg-gradient-to-r from-ocean/15 to-navy border border-tealmint/15 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col gap-3 text-left">
             <span className="font-mono text-xs text-tealmint uppercase tracking-widest">Global Operations</span>

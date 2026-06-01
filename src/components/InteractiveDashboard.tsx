@@ -63,7 +63,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
     <div className={`w-full mx-auto rounded-2xl overflow-hidden border border-tealmint/15 bg-[#04090e] shadow-2xl flex flex-col md:flex-row text-pearl transition-all duration-300 ${
       isHero 
         ? 'max-w-xl h-auto md:h-[500px]' 
-        : 'max-w-7xl h-auto md:h-[720px]'
+        : 'max-w-[1600px] h-auto md:h-[720px]'
     }`}>
       {/* Sidebar Mockup */}
       <div className={`bg-[#060d14] border-b md:border-b-0 md:border-r border-tealmint/10 p-3 md:p-5 flex flex-row md:flex-col justify-between items-center shrink-0 transition-all duration-300 w-full ${

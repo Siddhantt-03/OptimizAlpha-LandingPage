@@ -67,7 +67,7 @@ export default function Contact() {
 
   return (
     <div className="bg-navy min-h-screen pt-32 pb-24 text-pearl">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12">
         {/* Header Hero */}
         <section className="text-center mb-16 relative">
           <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-ocean/10 blur-[100px] pointer-events-none" />
@@ -265,8 +265,8 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className="text-[10px] font-mono text-pearl/40 uppercase tracking-widest block">Email inquiry</span>
-                    <a href="mailto:hello@optimizalpha.com" className="text-sm font-mono text-tealmint hover:underline">
-                      hello@optimizalpha.com
+                    <a href="mailto:support@optimizalpha.com" className="text-sm font-mono text-tealmint hover:underline">
+                      support@optimizalpha.com
                     </a>
                   </div>
                 </div>

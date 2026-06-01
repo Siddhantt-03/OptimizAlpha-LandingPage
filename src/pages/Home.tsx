@@ -118,7 +118,7 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="absolute top-1/4 left-1/10 w-96 h-96 rounded-full bg-ocean/10 blur-[120px] animate-aurora-1" />
         <div className="absolute bottom-1/5 right-1/10 w-96 h-96 rounded-full bg-tealmint/8 blur-[100px] animate-aurora-2" />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Hero Left Content */}
           <div className="lg:col-span-6 flex flex-col items-start text-left gap-6 relative z-10">
             {/* Pill Eyebrow */}
@@ -194,7 +194,7 @@ export default function Home({ onNavigate }: HomeProps) {
 
 
       {/* 3. PLATFORM SECTION */}
-      <section id="platform" className="py-24 max-w-7xl mx-auto px-6 md:px-12 border-b border-tealmint/10">
+      <section id="platform" className="py-24 max-w-[1600px] mx-auto px-6 md:px-12 border-b border-tealmint/10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-pearl">
             A platform your investment team will actually use.
@@ -216,7 +216,7 @@ export default function Home({ onNavigate }: HomeProps) {
         {/* Glow corner */}
         <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-ocean/5 blur-[120px]" />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12">
           <div className="max-w-3xl mb-16">
             <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Institutional Analytics Suite</span>
             <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tight text-pearl">
@@ -351,7 +351,7 @@ export default function Home({ onNavigate }: HomeProps) {
 
 
       {/* 6. HOW IT WORKS */}
-      <section className="py-24 max-w-7xl mx-auto px-6 md:px-12">
+      <section className="py-24 max-w-[1600px] mx-auto px-6 md:px-12">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Onboarding Roadmap</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
@@ -402,7 +402,7 @@ export default function Home({ onNavigate }: HomeProps) {
 
 
       {/* 8. PRICING TEASER */}
-      <section id="pricing" className="py-24 max-w-7xl mx-auto px-6 md:px-12 border-t border-tealmint/10">
+      <section id="pricing" className="py-24 max-w-[1600px] mx-auto px-6 md:px-12 border-t border-tealmint/10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Platform Pricing</span>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
