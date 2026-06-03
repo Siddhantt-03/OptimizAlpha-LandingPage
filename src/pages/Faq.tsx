@@ -98,22 +98,22 @@ export default function Faq() {
         {
           id: "pc1",
           q: "What is OptimizAlpha?",
-          a: "OptimizAlpha is an institutional-grade investment analytics platform that consolidates fragmented, complex data into a single, decision-making intelligence layer. It is purpose-built for sophisticated investors who require decision-grade insight, institutional-quality reporting of asset classes, and faster, more transparent research cycles."
+          a: "OptimizAlpha is a premium, institutional-grade investment analytics platform designed to consolidate complex and fragmented portfolio data into a single, unified intelligence layer. We empower asset managers, family offices, and institutional investors with decision-grade insights, professional reporting, and highly automated research workflows."
         },
         {
           id: "pc2",
           q: "What core capabilities does the platform unify?",
-          a: "The platform unifies performance measurement, attribution analysis, exposure monitoring, private equity analytics, embedded AI investment intelligence, and institutional reporting."
+          a: "OptimizAlpha integrates several key capabilities into a single cohesive interface: robust portfolio performance measurement, granular relative attribution, real-time exposure and drift monitoring, specialized private market analytics, and an on-demand AI co-pilot for automated narrative reporting."
         },
         {
           id: "pc3",
           q: "What asset classes and entity models are supported?",
-          a: "OptimizAlpha supports all public and private asset classes. The platform utilizes a multi-level entity model spanning Fund, Family, and Account levels."
+          a: "The platform supports a comprehensive range of both public and private asset classes. It is built on a flexible, multi-tier organizational model, allowing you to seamlessly analyze and roll up performance data across Fund, Family Office, and Individual Account levels."
         },
         {
           id: "pc4",
           q: "What performance calculation methodologies are supported?",
-          a: "The engine supports GIPS-aligned calculations including unweighted TWRR, Time Weighted Method (Daily & Modified Dietz Method (Monthly)), and money-weighted (MWRR) returns. It also supports IRR/XIRR, linked multi-period returns, FX-adjusted returns, and benchmark-relative returns, with fully documented calculation logic and a complete audit trail."
+          a: "OptimizAlpha supports standard, GIPS-aligned calculation methodologies to satisfy rigorous institutional auditing requirements. This includes unweighted TWRR, Daily and Monthly Modified Dietz, money-weighted MWRR (IRR/XIRR), multi-period linking, and FX-adjusted returns. Every calculation is backed by transaction-level logging and a fully auditable data lineage."
         }
       ]
     },
@@ -123,17 +123,17 @@ export default function Faq() {
         {
           id: "ac1",
           q: "What performance attribution methodology is used?",
-          a: "A Brinson-Fachler attribution decomposition engine captures performance relative to the benchmark. It decomposes relative return - the difference between portfolio and benchmark - into allocation, selection, and interaction effects at the asset-class and sector levels."
+          a: "We utilize a precise Brinson-Fachler attribution model to isolate active management performance relative to a chosen benchmark. The engine decomposes your active returns into distinct allocation, security selection, and interaction effects at both the asset-class and sector levels."
         },
         {
           id: "ac2",
           q: "What is the difference between relative attribution and absolute contribution?",
-          a: "The two views are complementary:\n- Attribution measures active management skill relative to a benchmark by separating returns into allocation and selection effects.\n- Contribution is absolute and security-focused, measuring the weighted contribution of every individual holding (position weight x position return) and aggregating from the security level upward to determine which holdings built or eroded the portfolio's absolute value."
+          a: "The platform provides two complementary lenses on your portfolio performance:\n- **Relative Attribution** measures active management skill against a benchmark, isolating whether your outperformance was driven by sector allocation or security selection.\n- **Absolute Contribution** focuses on absolute returns without a benchmark, calculating the direct impact of every holding (weight × return) to show exactly which positions built or eroded your total capital."
         },
         {
           id: "ac3",
           q: "What is the AI Performance Agent?",
-          a: "The AI Performance Agent is an embedded co-pilot that analyzes performance, attribution, exposure, and private equity data - and writes institutional-grade commentary on demand, compressing reporting and analysis cycles."
+          a: "The AI Performance Agent is a secure, built-in co-pilot designed to streamline your reporting workflows. It automatically drafts institutional-grade investment commentaries by analyzing your attribution, drift, and private market metrics, significantly reducing manual reporting cycles."
         }
       ]
     },
@@ -143,27 +143,32 @@ export default function Faq() {
         {
           id: "ds1",
           q: "What deployment options are offered?",
-          a: "OptimizAlpha is offered under two deployment models:\n- On-Premise (In-Perimeter): Recommended model for immediate deployment. Sourced for institutional clients with strict security, privacy, and sovereignty requirements.\n- SaaS (Cloud-Hosted): Currently under development, expected to be available within 12-18 months. Offered as a backup option for clients preferring a fully managed cloud service."
+          a: "We support two primary deployment models to suit your organization's IT and compliance preferences:\n\n- **On-Premise (In-Perimeter)**: Our primary, self-hosted deployment. It runs inside your own private cloud or local servers, giving you complete sovereignty and compliance control. You retain complete sovereign command over application hosting and security keys, isolate your portfolio data from third-party networks, decide when to apply updates, and leverage formal source-code escrow contracts.\n\n- **SaaS (Cloud-Hosted)**: An upcoming, fully managed cloud service currently under development (scheduled for release within the next 12-18 months) for teams seeking low IT maintenance overhead. It will feature AWS multi-tenant hosting, automatic patches, and SOC 2 data encryption."
         },
         {
           id: "ds2",
           q: "How does the On-Premise model address data residency concerns?",
-          a: "No cross-border data transfer and no third party in the data path. Client data remains within your environment in your chosen jurisdiction, removing cross-residency and regulatory compliance uncertainty rather than mitigating it."
+          a: "By running entirely within your secure cloud perimeter, all portfolio data remains strictly within your jurisdiction. This layout avoids cross-border data transfers and keeps third-party handlers out of the data path, giving you absolute certainty over regulatory compliance."
         },
         {
           id: "ds3",
           q: "How does the On-Premise model ensure information security?",
-          a: "The solution is deployed within your existing, security-reviewed and approved architecture under your own network and security controls. Decisions regarding application access - whether internal or external users - remain entirely at your discretion."
+          a: "The platform integrates directly into your organization's audited and approved network architecture. Since it resides behind your own firewall and access policies, you retain full, exclusive control over who can access the application, both internally and externally."
         },
         {
           id: "ds4",
           q: "How does the On-Premise model address operational continuity?",
-          a: "The platform runs on infrastructure you already operate, under your existing business continuity frameworks. There is no vendor-side production environment that can fail."
+          a: "Because the platform runs directly on infrastructure you control, it is covered under your own business continuity and disaster recovery frameworks. This layout removes any reliance on external vendor uptime, ensuring continuous availability."
         },
         {
           id: "ds5",
           q: "What happens if there are concerns about the viability of OptimizAlpha?",
-          a: "A source-code escrow model or contingency arrangement (source-code release in the event of insolvency or abandonment of the software) is ready. The code is already within your perimeter, fully documented, so your team or a third party can operate it independently, providing clear contractual recourse."
+          a: "To secure your long-term operations, we offer a source-code escrow contingency model. In the event of company insolvency or software abandonment, the fully documented codebase is officially released to you. Because the software is hosted locally on your servers, your team or a third-party partner can continue to run and maintain it independently."
+        },
+        {
+          id: "ds6",
+          q: "What is the onboarding timeline and implementation journey?",
+          a: "We offer a structured, 24-week onboarding process to transition your operations seamlessly to the platform:\n\n- **Weeks 1–8: Data Onboarding** - Ingesting historical portfolio records, configuring data validation feeds, and establishing baseline reconciliation frameworks.\n- **Weeks 9–16: Platform Configuration** - Setting up your custom visual dashboards, defining cycle-driven reporting templates, and configuring role-based user access controls.\n- **Weeks 17–24: Analytics Deployment** - Activating real-time Brinson-Fachler attribution modules, policy drift trigger alerts, private equity multiples calculations, and the AI performance agent writer."
         }
       ]
     }

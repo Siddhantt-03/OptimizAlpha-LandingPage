@@ -10,41 +10,41 @@ import SpotlightEffect from '../components/SpotlightEffect';
 export default function About() {
   const clientBenefits = {
     operational: [
-      "Dynamic asset/entity path",
-      "Fast, automated reporting",
-      "Unified, secure data layer",
-      "Complete calculation audit"
+      "Interactive multi-asset entity hierarchy",
+      "Automated, cycle-driven client reporting",
+      "A consolidated, secure data layer",
+      "Transaction-level calculation audits"
     ],
     investment: [
-      "Portfolio performance analysis",
-      "Relative attribution analysis",
-      "Exposure & drift monitoring",
-      "LP private equity metrics"
+      "Detailed performance measurement",
+      "Granular Brinson-Fachler attribution",
+      "Real-time asset exposure monitoring",
+      "Multi-asset private market IRR & multiples"
     ],
     strategic: [
-      "Focus on core competency",
-      "Sovereignty over platform",
-      "Zero data residency risks",
-      "Bounded vendor dependency"
+      "Redirect operational resources to strategy",
+      "Full sovereign command of application code",
+      "Zero compliance risks from data transit",
+      "Escrow contracts guaranteeing continuity"
     ]
   };
 
   const concerns = [
     {
-      title: "Data Residency & Regulatory",
-      desc: "No cross-border data transfer and no third party in the data path. Client data remains within your environment in your chosen jurisdiction, removing cross-residency and regulatory compliance uncertainty rather than mitigating it."
+      title: "Absolute Data Residency",
+      desc: "Our self-hosted layout completely prevents cross-border data transfers and keeps third-party handlers out of your data path. Since all portfolio metrics reside strictly within your chosen jurisdiction, regulatory compliance is resolved natively by design."
     },
     {
-      title: "Information Security",
-      desc: "The solution is deployed within your existing, security-reviewed and approved architecture under your own network and security controls. Decisions regarding application access - whether internal or external users - remain entirely at your discretion."
+      title: "Audited Perimeter Security",
+      desc: "OptimizAlpha runs entirely behind your firewall and network controls, integrating seamlessly into your pre-approved corporate security architecture. Access control configuration—including all internal and external user privileges—remains completely under your authority."
     },
     {
-      title: "Operational Continuity",
-      desc: "The platform runs on infrastructure you already operate, under your existing business continuity frameworks. There is no vendor-side production environment that can fail."
+      title: "Zero Vendor Cloud Uptime Risks",
+      desc: "Because the application runs on the infrastructure your organization already operates, it falls natively under your own backup and business continuity frameworks. There is no vendor-side cloud service that can go offline and disrupt your research operations."
     },
     {
-      title: "Viability of OptimizAlpha",
-      desc: "Additional covenantally and pre-emptively - source-code escrow model or contingency arrangement (source-code release in the event of insolvency or abandonment of the software) is ready, so the code is already within your perimeter, fully documented and is a contingency standard on your team or a third party can operate it independently of us, in a solid engagement that provides clear contractual recourse."
+      title: "Source-Code Escrow Contingency",
+      desc: "To guarantee long-term operational viability, we establish contractually binding source-code escrow arrangements. In the event of product abandonment or vendor insolvency, the fully documented codebase is officially released to your team, allowing you to run and maintain it independently."
     }
   ];
 

@@ -1,4 +1,4 @@
-import { Linkedin, Twitter, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import Logo from './Logo';
 
 interface FooterProps {
@@ -43,7 +43,7 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12 md:gap-8 pb-16">
           {/* Logo & Tagline */}
-          <div className="col-span-2 md:col-span-2 flex flex-col gap-6">
+          <div className="col-span-2 md:col-span-3 flex flex-col gap-6">
             <div onClick={() => handleItemClick('/')}>
               <Logo layout="stacked" />
             </div>
@@ -51,25 +51,6 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
             <p className="text-sm text-pearl/70 leading-relaxed max-w-sm">
               See Every Edge. Own Every Alpha. Institutional-grade portfolio analytics built for the way serious capital thinks.
             </p>
-
-            <div className="flex items-center gap-4 text-pearl/50">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-full border border-pearl/10 hover:border-tealmint hover:text-tealmint transition-all duration-300 bg-ocean/5"
-              >
-                <Linkedin size={18} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                className="p-2 rounded-full border border-pearl/10 hover:border-tealmint hover:text-tealmint transition-all duration-300 bg-ocean/5"
-              >
-                <Twitter size={18} />
-              </a>
-            </div>
           </div>
 
           {/* Col 2: Platform */}
@@ -85,54 +66,15 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
                 Features
               </button>
               <button
-                onClick={() => handleItemClick('/contact')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Book a Demo
-              </button>
-              <button
-                onClick={() => handleItemClick('/#pricing')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Deployment Options
-              </button>
-              <button
-                onClick={() => handleItemClick('/faq')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Platform Security
-              </button>
-            </div>
-          </div>
-
-          {/* Col 3: Company */}
-          <div className="flex flex-col gap-4">
-            <h3 className="font-mono text-xs uppercase tracking-widest text-tealmint">
-              Company
-            </h3>
-            <div className="flex flex-col gap-2">
-              <button
                 onClick={() => handleItemClick('/about')}
                 className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
               >
                 About Us
               </button>
-              <button
-                onClick={() => handleItemClick('/about')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Careers
-              </button>
-              <button
-                onClick={() => handleItemClick('/about')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Press & Insights
-              </button>
             </div>
           </div>
 
-          {/* Col 4: Support */}
+          {/* Col 3: Support */}
           <div className="flex flex-col gap-4">
             <h3 className="font-mono text-xs uppercase tracking-widest text-tealmint">
               Support
@@ -148,19 +90,7 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
                 onClick={() => handleItemClick('/contact')}
                 className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
               >
-                Contact Support
-              </button>
-              <button
-                onClick={() => handleItemClick('/faq')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Privacy Policy
-              </button>
-              <button
-                onClick={() => handleItemClick('/faq')}
-                className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
-              >
-                Terms of Service
+                Request Proposal
               </button>
             </div>
           </div>

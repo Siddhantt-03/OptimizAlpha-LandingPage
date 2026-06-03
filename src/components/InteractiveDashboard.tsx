@@ -99,14 +99,14 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
           </div>
 
           {/* Navigation Links */}
-          <div className={`flex flex-row md:flex-col gap-1.5 md:gap-2 shrink-0 ${isHero ? 'w-auto md:items-center' : 'w-full'}`}>
+          <div className={`flex flex-row md:flex-col gap-1.5 md:gap-2 shrink-0 ${isHero ? 'w-auto md:items-center' : 'w-auto md:w-full'}`}>
             <button
               onClick={() => setActiveTab('attribution')}
               title={isHero ? "Attribution & Contribution" : undefined}
               className={`flex items-center gap-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left ${
                 isHero 
                   ? 'md:justify-center md:w-10 md:h-10 p-2 md:p-0' 
-                  : 'p-2 md:p-2.5 w-full gap-3'
+                  : 'p-2 md:p-2.5 w-auto md:w-full gap-3'
               } ${
                 activeTab === 'attribution'
                   ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
@@ -123,7 +123,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
               className={`flex items-center gap-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left ${
                 isHero 
                   ? 'md:justify-center md:w-10 md:h-10 p-2 md:p-0' 
-                  : 'p-2 md:p-2.5 w-full gap-3'
+                  : 'p-2 md:p-2.5 w-auto md:w-full gap-3'
               } ${
                 activeTab === 'exposure'
                   ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
@@ -140,7 +140,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
               className={`flex items-center gap-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left ${
                 isHero 
                   ? 'md:justify-center md:w-10 md:h-10 p-2 md:p-0' 
-                  : 'p-2 md:p-2.5 w-full gap-3'
+                  : 'p-2 md:p-2.5 w-auto md:w-full gap-3'
               } ${
                 activeTab === 'pe'
                   ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
@@ -157,7 +157,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
               className={`flex items-center gap-2 rounded-lg text-xs md:text-sm font-medium transition-all duration-200 text-left ${
                 isHero 
                   ? 'md:justify-center md:w-10 md:h-10 p-2 md:p-0' 
-                  : 'p-2 md:p-2.5 w-full gap-3'
+                  : 'p-2 md:p-2.5 w-auto md:w-full gap-3'
               } ${
                 activeTab === 'ai'
                   ? 'bg-ocean/30 border-b-2 md:border-b-0 md:border-l-2 border-tealmint text-tealmint font-semibold'
@@ -171,7 +171,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
         </div>
 
         {/* Sidebar Footer Elements */}
-        <div className={`flex flex-row md:flex-col gap-3 md:gap-4 mt-0 md:mt-6 pt-0 md:pt-4 border-t-0 md:border-t border-tealmint/15 w-auto md:w-full items-center justify-end md:justify-start ${isHero ? 'md:items-center' : ''}`}>
+        <div className={`flex flex-row md:flex-col gap-3 md:gap-4 mt-0 md:mt-6 pt-0 md:pt-4 border-t-0 md:border-t border-tealmint/15 w-auto md:w-full items-center justify-end md:justify-start shrink-0 ${isHero ? 'md:items-center' : ''}`}>
           {isHero ? (
             <div className="flex flex-row md:flex-col gap-3 md:gap-4 items-center">
               <span title="Institutional Control"><Shield size={16} className="text-tealmint" /></span>

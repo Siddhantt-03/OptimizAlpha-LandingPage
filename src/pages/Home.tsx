@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   TrendingUp, 
   Layers, 
@@ -55,38 +56,38 @@ export default function Home({ onNavigate }: HomeProps) {
 
   const features = [
     {
-      icon: <Activity className="text-tealmint" size={24} />,
-      title: "01 - Performance Analytics",
+      Icon: Activity,
+      title: "Performance Analytics",
       desc: "Institutional performance measurement with GIPS-aligned methodology - across portfolios, asset classes, and individual positions. Supports unweighted TWRR, Daily & Modified Dietz Method (Monthly), money-weighted MWRR (IRR/XIRR) returns, FX-adjusted, and benchmark-relative returns with fully documented audit trails.",
       pill: "GIPS-Aligned"
     },
     {
-      icon: <TrendingUp className="text-tealmint" size={24} />,
-      title: "02 - Top-Down Relative Attribution",
+      Icon: TrendingUp,
+      title: "Relative Performance Attribution",
       desc: "A Brinson-Fachler attribution decomposition engine captures performance relative to the benchmark. It decomposes relative return - the difference between portfolio and benchmark - into allocation, selection, and interaction effects at the asset-class and sector levels.",
       pill: "Brinson-Fachler"
     },
     {
-      icon: <Award className="text-tealmint" size={24} />,
-      title: "03 - Bottom-Up Absolute Contribution",
+      Icon: Award,
+      title: "Absolute Contribution Ledger",
       desc: "Contribution analysis explains the portfolio's own absolute return, independent of any benchmark. It measures the weighted contribution of every individual holding (position weight x position return) and aggregates from the security level upward to the total.",
       pill: "Security Contribution"
     },
     {
-      icon: <PieChart className="text-tealmint" size={24} />,
-      title: "04 - Exposure Analytics",
+      Icon: PieChart,
+      title: "Asset Exposure Analytics",
       desc: "Continuous portfolio oversight by asset class, entity, sector, geography, and currency - with allocation-drift and concentration monitoring. Actual positioning is monitored against policy in real-time, surfacing drift before it becomes a governance issue.",
       pill: "Real-Time Drift"
     },
     {
-      icon: <Layers className="text-tealmint" size={24} />,
-      title: "05 - Private Equity Analytics",
+      Icon: Layers,
+      title: "Private Equity Analytics",
       desc: "L.P.-focused private market measurement in a single, institutional view - IRR, MOIC, TVPI, DPI, RVPI, vintage and vintage comparisons, peer-group benchmarking, J-Curve analysis, and forward-looking cash flow, sensitivity, and pacing models.",
       pill: "Private Markets"
     },
     {
-      icon: <MessageSquare className="text-tealmint" size={24} />,
-      title: "06 - AI Performance Agent",
+      Icon: MessageSquare,
+      title: "AI Commentary Engine",
       desc: "An embedded co-pilot that analyzes performance, attribution, exposure, and private equity data - and writes institutional-grade commentary on demand, compressing reporting cycles while strengthening narratives.",
       pill: "AI Intelligence"
     }
@@ -104,13 +105,7 @@ export default function Home({ onNavigate }: HomeProps) {
         <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Hero Left Content */}
           <div className="lg:col-span-6 flex flex-col items-start text-left gap-6 relative z-10">
-            {/* Pill Eyebrow */}
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-tealmint/10 border border-tealmint/25 backdrop-blur-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-tealmint animate-pulse" />
-              <span className="font-mono text-xs font-semibold text-tealmint uppercase tracking-wider">
-                CONFIDENTIAL 2026 · INSTITUTIONAL INVESTORS
-              </span>
-            </div>
+
 
             {/* H1 Display */}
             <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-pearl leading-none">
@@ -231,12 +226,12 @@ export default function Home({ onNavigate }: HomeProps) {
                     onMouseEnter={() => setActiveFeature(idx)}
                     className={`border rounded-2xl p-5 flex gap-4 transition-all duration-300 cursor-pointer relative group ${
                       isActive 
-                        ? 'bg-ocean/15 border-tealmint/40 shadow-xl shadow-tealmint/5 hover:scale-[1.01]' 
+                        ? 'bg-gradient-to-br from-ocean/15 to-navy/30 border-tealmint/40 shadow-xl shadow-ocean/5 hover:scale-[1.01]' 
                         : 'bg-[#050c12]/40 border-tealmint/10 hover:border-tealmint/25 hover:bg-ocean/5 hover:scale-[1.01]'
                     }`}
                   >
                     {isActive && (
-                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-tealmint rounded-l-2xl" />
+                      <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-tealmint to-ocean rounded-l-2xl" />
                     )}
                     
                     <span className="absolute top-4 right-4 font-mono text-[8px] text-tealmint/30 group-hover:text-tealmint/60 transition-colors">
@@ -244,9 +239,11 @@ export default function Home({ onNavigate }: HomeProps) {
                     </span>
                     
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-md transition-all duration-300 ${
-                      isActive ? 'bg-tealmint text-navy' : 'bg-tealmint/5 border border-tealmint/20 text-tealmint group-hover:bg-tealmint group-hover:text-navy'
+                      isActive 
+                        ? 'bg-gradient-to-br from-tealmint to-ocean text-navy shadow-lg shadow-tealmint/15' 
+                        : 'bg-tealmint/5 border border-tealmint/20 text-tealmint group-hover:bg-gradient-to-br group-hover:from-tealmint group-hover:to-ocean group-hover:text-navy'
                     }`}>
-                      {feat.icon}
+                      <feat.Icon size={20} className="shrink-0 transition-colors duration-300" />
                     </div>
                     <div className="flex flex-col gap-1 flex-1 min-w-0 pr-6">
                       <div className="flex items-center gap-2">
@@ -271,8 +268,7 @@ export default function Home({ onNavigate }: HomeProps) {
             {/* Right side Showcase Window */}
             <div className="col-span-7 relative h-full">
               <div 
-                className="sticky top-28 h-[500px] rounded-3xl border border-tealmint/15 bg-[#04090e] shadow-2xl premium-glow-shadow p-6 relative overflow-hidden flex flex-col justify-between transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-tealmint/25"
-                style={{ transform: `translateY(${activeFeature * 78}px)` }}
+                className="sticky top-28 h-[520px] rounded-3xl border border-tealmint/15 bg-[#04090e] shadow-2xl premium-glow-shadow p-6 relative overflow-hidden flex flex-col justify-between hover:border-tealmint/25 transition-all duration-300"
               >
                 {/* Browser Mock Top bar decoration */}
                 <div className="absolute top-0 left-0 right-0 h-10 border-b border-tealmint/10 bg-[#060c14] px-4 flex items-center gap-1.5 shrink-0 z-10">
@@ -280,13 +276,24 @@ export default function Home({ onNavigate }: HomeProps) {
                   <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
                   <div className="h-4 w-44 rounded bg-[#0b141e] border border-tealmint/10 mx-auto text-[7px] font-mono text-pearl/30 flex items-center justify-center tracking-wider uppercase select-none">
-                    OA://CORE_CAPABILITIES
+                    OA://PORTFOLIO_INTELLIGENCE
                   </div>
                 </div>
                 
                 {/* Showcase Container */}
-                <div className="flex-1 mt-8 pt-4 overflow-y-auto scroll-hide-scrollbar">
-                  <FeatureShowcase activeIndex={activeFeature} />
+                <div className="flex-1 mt-8 pt-4 overflow-y-auto scroll-hide-scrollbar relative">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeFeature}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="h-full"
+                    >
+                      <FeatureShowcase activeIndex={activeFeature} />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
@@ -306,9 +313,9 @@ export default function Home({ onNavigate }: HomeProps) {
                 >
                   <div className="flex gap-4 items-center">
                     <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-md ${
-                      isExpanded ? 'bg-tealmint text-navy' : 'bg-ocean/20 text-tealmint'
+                      isExpanded ? 'bg-gradient-to-br from-tealmint to-ocean text-navy' : 'bg-ocean/20 text-tealmint'
                     }`}>
-                      {feat.icon}
+                      <feat.Icon size={18} className="shrink-0" />
                     </div>
                     <div className="flex-1 flex items-center justify-between min-w-0">
                       <div>
@@ -346,122 +353,7 @@ export default function Home({ onNavigate }: HomeProps) {
         </div>
       </section>
 
-      {/* 6. IMPLEMENTATION APPROACH */}
-      <section className="py-24 max-w-[1600px] mx-auto px-6 md:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">Implementation Approach</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
-            Phased 24-Week Onboarding Journey
-          </h2>
-          <p className="text-sm text-pearl/60 mt-3 font-mono">
-            A structured transition to a fully deployed analytics platform.
-          </p>
-        </div>
 
-        {/* 3 Step Timeline */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-[1px] bg-tealmint/20 z-0" />
-
-          {/* Phase 1 */}
-          <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 text-center flex flex-col items-center gap-4 relative z-10">
-            <div className="w-10 h-10 rounded-full bg-ocean text-pearl font-mono text-sm font-bold flex items-center justify-center border border-tealmint/30 shadow-md">
-              01
-            </div>
-            <h3 className="font-display text-lg font-bold text-pearl">Weeks 1-8: Data Onboarding</h3>
-            <p className="text-xs text-pearl/70 leading-relaxed font-mono">
-              Historical data ingestion, validation & reconciliation, framework setup.
-            </p>
-          </div>
-
-          {/* Phase 2 */}
-          <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 text-center flex flex-col items-center gap-4 relative z-10">
-            <div className="w-10 h-10 rounded-full bg-ocean text-pearl font-mono text-sm font-bold flex items-center justify-center border border-tealmint/30 shadow-md">
-              02
-            </div>
-            <h3 className="font-display text-lg font-bold text-pearl">Weeks 9-16: Platform Configuration</h3>
-            <p className="text-xs text-pearl/70 leading-relaxed font-mono">
-              Dashboard configuration, reporting setup, user access control & security configuration.
-            </p>
-          </div>
-
-          {/* Phase 3 */}
-          <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 text-center flex flex-col items-center gap-4 relative z-10">
-            <div className="w-10 h-10 rounded-full bg-ocean text-pearl font-mono text-sm font-bold flex items-center justify-center border border-tealmint/30 shadow-md">
-              03
-            </div>
-            <h3 className="font-display text-lg font-bold text-pearl">Weeks 17-24: Analytics Deployment</h3>
-            <p className="text-xs text-pearl/70 leading-relaxed font-mono">
-              Attribution analysis, exposure monitoring, PE analytics & AI agent.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. DEPLOYMENT OPTIONS */}
-      <section id="pricing" className="py-24 max-w-[1600px] mx-auto px-6 md:px-12 border-t border-tealmint/10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-2">DEPLOYMENT MODELS</span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-pearl">
-            Deployment Options
-          </h2>
-          <p className="text-sm text-pearl/60 mt-3 font-mono">
-            Comparing dimensions most relevant to institutional due diligence.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-          {/* On-Premise Card */}
-          <div className="bg-[#07131e] border-2 border-tealmint rounded-2xl p-8 flex flex-col justify-between shadow-xl shadow-tealmint/5 relative">
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-ocean to-tealmint text-navy font-mono text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md">
-              Recommended & Available Now
-            </span>
-            <div className="flex flex-col gap-4">
-              <span className="font-mono text-xs text-tealmint uppercase tracking-widest mt-2">Packaged Application</span>
-              <h3 className="font-display text-2xl font-bold text-pearl">On-Premise (In-Perimeter)</h3>
-              <p className="text-xs text-pearl/70 leading-relaxed mt-2">
-                Recommended model for institutional clients with strict security, privacy, and sovereignty requirements. Deployed entirely within your secure perimeter (your VPC, on-premise servers).
-              </p>
-              <ul className="mt-6 space-y-2.5 font-mono text-[10px] text-pearl/85 text-left list-disc pl-4">
-                <li>You retain full sovereignty, control, and keys.</li>
-                <li>GDPR, HIPAA, and CCPA requirements met natively.</li>
-                <li>No cross-border data transfer or third party in data path.</li>
-                <li>Client-controlled release cadence and packaged updates.</li>
-                <li>Source-code escrow / contingency standards available.</li>
-              </ul>
-            </div>
-            <button 
-              onClick={() => onNavigate('/contact')}
-              className="w-full py-2.5 mt-8 rounded-full bg-ocean border border-tealmint/30 text-pearl font-semibold text-xs hover:bg-tealmint hover:text-navy transition-all duration-300"
-            >
-              Request On-Premise Details
-            </button>
-          </div>
-
-          {/* SaaS Card */}
-          <div className="bg-[#050c12] border border-tealmint/10 rounded-2xl p-8 flex flex-col justify-between hover:border-tealmint/30 transition-colors">
-            <div className="flex flex-col gap-4">
-              <span className="font-mono text-xs text-tealmint uppercase tracking-widest">Backup Options</span>
-              <h3 className="font-display text-2xl font-bold text-pearl">SaaS (Cloud-Hosted)</h3>
-              <p className="text-xs text-pearl/65 leading-relaxed mt-2">
-                Currently under development with availability expected within the next 12-18 months. Offered as a backup option for clients that prefer a fully managed cloud service.
-              </p>
-              <ul className="mt-6 space-y-2.5 font-mono text-[10px] text-pearl/80 text-left list-disc pl-4">
-                <li>Fully managed by OptimizAlpha in secure environments.</li>
-                <li>Requires minimal internal IT involvement.</li>
-                <li>Hosted in AWS multi-tenant setup.</li>
-                <li>Updates, patches, and monitoring handled by OptimizAlpha.</li>
-                <li>Industry-standard security (SOCI/II) & robust encryption.</li>
-              </ul>
-            </div>
-            <button 
-              onClick={() => onNavigate('/contact')}
-              className="w-full py-2.5 mt-8 rounded-full border border-tealmint/25 text-tealmint font-semibold text-xs hover:bg-tealmint hover:text-navy transition-all duration-300"
-            >
-              Request SaaS Timeline
-            </button>
-          </div>
-        </div>
-      </section>
 
       {/* 9. FINAL CTA CARD */}
       <section className="py-24 max-w-[1600px] mx-auto px-6 md:px-12">
