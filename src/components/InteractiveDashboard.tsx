@@ -23,25 +23,27 @@ interface MetricCardProps {
 function MetricCard({ label, value, change, isPositive, subtext, compact = false }: MetricCardProps) {
   return (
     <div className={`bg-[#0b141e] border border-tealmint/10 rounded-xl transition-all duration-300 shadow-md hover:border-tealmint/30 ${
-      compact ? 'p-3.5' : 'p-5'
+      compact ? 'p-2.5 sm:p-3.5' : 'p-3.5 sm:p-5'
     }`}>
       <span className={`font-mono text-pearl/50 uppercase tracking-wider block ${
-        compact ? 'text-[9px]' : 'text-[11px]'
+        compact ? 'text-[8px] sm:text-[9px]' : 'text-[9px] sm:text-[11px]'
       }`}>{label}</span>
       <div className="flex items-baseline gap-1.5 mt-1.5 flex-wrap">
         <span className={`font-mono font-semibold text-pearl ${
-          compact ? 'text-lg md:text-xl' : 'text-2xl'
+          compact ? 'text-base sm:text-lg md:text-xl' : 'text-lg sm:text-2xl'
         }`}>{value}</span>
         {change && (
           <span className={`flex items-center font-mono font-medium ${
-            compact ? 'text-[9px]' : 'text-xs'
+            compact ? 'text-[8px] sm:text-[9px]' : 'text-[10px] sm:text-xs'
           } ${isPositive ? 'text-tealmint' : 'text-red-400'}`}>
             {change}
           </span>
         )}
       </div>
       {subtext && (
-        <span className="text-[10px] font-mono text-pearl/40 block mt-1">
+        <span className={`font-mono text-pearl/40 block mt-1 ${
+          compact ? 'text-[8px] sm:text-[9px]' : 'text-[9px] sm:text-[10px]'
+        }`}>
           {subtext}
         </span>
       )}
@@ -242,7 +244,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
           {activeTab === 'attribution' && (
             <>
               {/* Top KPIs Summary row */}
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <MetricCard label="YTD Return" value="+12.40%" change="+280 bps vs BM" isPositive={true} compact={isHero} />
                 <MetricCard label="Composite Benchmark" value="+9.60%" subtext="YTD Target" compact={isHero} />
                 <MetricCard label="Relative Attribution" value="+0.90%" change="Attribution Sum" isPositive={true} compact={isHero} />
@@ -323,7 +325,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
           {activeTab === 'exposure' && (
             <>
               {/* KPIs summary */}
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <MetricCard label="Equity Position" value="47% Actual" subtext="Policy Target: 45% (+2.0% Drift)" compact={isHero} />
                 <MetricCard label="Fixed Income Position" value="28% Actual" subtext="Policy Target: 30% (-2.0% Drift)" compact={isHero} />
               </div>
@@ -383,7 +385,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
           {activeTab === 'pe' && (
             <>
               {/* L.P.-focused Private Market Metrics */}
-              <div className="grid grid-cols-4 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                 <MetricCard label="Net IRR" value="18.4%" subtext="Since Inception" compact={isHero} />
                 <MetricCard label="TVPI Multiple" value="1.54x" subtext="Total Value/Paid-In" compact={isHero} />
                 <MetricCard label="DPI Multiple" value="0.32x" subtext="Distribution/Paid-In" compact={isHero} />
@@ -435,7 +437,7 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
 
           {/* TAB 4: AI PERFORMANCE AGENT */}
           {activeTab === 'ai' && (
-            <div className="bg-[#0b141e] border border-tealmint/10 rounded-xl p-4 shadow-md flex flex-col gap-4 h-full justify-between">
+            <div className="bg-[#0b141e] border border-tealmint/10 rounded-xl p-4 shadow-md flex flex-col gap-4">
               <div>
                 <h4 className="text-xs md:text-sm font-semibold text-pearl flex items-center gap-1.5">
                   <MessageSquare size={14} className="text-tealmint" />
@@ -457,9 +459,12 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
                 {/* AI Agent output response */}
                 <div className="flex gap-2.5 items-start">
                   <span className="text-purple-400 font-bold mt-1 select-none">AI&gt;</span>
-                  <div className="bg-[#060c14] border border-purple-500/15 rounded-xl p-4 w-full text-pearl/85 relative shadow-inner">
-                    <div className="absolute top-2.5 right-3 px-1.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-[7px] text-purple-400">
-                      EMBEDDED CO-PILOT
+                  <div className="bg-[#060c14] border border-purple-500/15 rounded-xl p-4 w-full text-pearl/85 shadow-inner">
+                    <div className="flex justify-between items-center mb-2.5 pb-2 border-b border-purple-500/10 select-none">
+                      <span className="text-[8px] font-mono text-pearl/40">OA_AI_RESPONSE</span>
+                      <div className="px-1.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-[7px] text-purple-400 font-mono">
+                        EMBEDDED CO-PILOT
+                      </div>
                     </div>
                     <p className="leading-relaxed text-pearl italic">
                       "Portfolio returned +12.4% YTD, outperforming the composite benchmark by +280 bps. Active return is driven primarily by allocation (+205 bps), led by US Equity (+210 bps) and PE Fund I (+80 bps). Allocation combined with +75 bps in selection return offset slight drag from alternative selection. Exposure drift remains within policy bounds: Equity YTD contribution is 52% (Money Mkt is YTD -10 bps)."

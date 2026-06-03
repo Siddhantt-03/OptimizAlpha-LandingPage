@@ -16,7 +16,7 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
   switch (activeIndex) {
     case 0: // Performance Analytics
       return (
-        <div className="flex flex-col gap-4 h-full justify-between animate-fadeIn text-pearl text-left">
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
@@ -27,25 +27,25 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
             </div>
 
             <div className="bg-[#0b141e] border border-tealmint/10 rounded-xl p-4 space-y-2.5 font-mono text-xs">
-              <div className="flex justify-between items-center border-b border-pearl/5 pb-2">
-                <span className="text-pearl/65">unweighted TWRR Engine</span>
-                <span className="text-tealmint font-semibold">GIPS-Aligned · Active</span>
+              <div className="grid grid-cols-12 gap-x-2 border-b border-pearl/5 pb-2 items-start">
+                <span className="col-span-7 text-pearl/65">unweighted TWRR Engine</span>
+                <span className="col-span-5 text-tealmint font-semibold text-right">GIPS-Aligned · Active</span>
               </div>
-              <div className="flex justify-between items-center border-b border-pearl/5 pb-2">
-                <span className="text-pearl/65">Time Weighted (Daily & Monthly Dietz)</span>
-                <span className="text-tealmint font-semibold">GIPS-Aligned · Active</span>
+              <div className="grid grid-cols-12 gap-x-2 border-b border-pearl/5 pb-2 items-start">
+                <span className="col-span-7 text-pearl/65">Time Weighted (Daily & Monthly Dietz)</span>
+                <span className="col-span-5 text-tealmint font-semibold text-right">GIPS-Aligned · Active</span>
               </div>
-              <div className="flex justify-between items-center border-b border-pearl/5 pb-2">
-                <span className="text-pearl/65">Money-weighted MWRR (IRR/XIRR)</span>
-                <span className="text-tealmint font-semibold">Active</span>
+              <div className="grid grid-cols-12 gap-x-2 border-b border-pearl/5 pb-2 items-start">
+                <span className="col-span-7 text-pearl/65">Money-weighted MWRR (IRR/XIRR)</span>
+                <span className="col-span-5 text-tealmint font-semibold text-right">Active</span>
               </div>
-              <div className="flex justify-between items-center border-b border-pearl/5 pb-2">
-                <span className="text-pearl/65">FX-Adjusted & Linked Multi-Period</span>
-                <span className="text-tealmint font-semibold">Active</span>
+              <div className="grid grid-cols-12 gap-x-2 border-b border-pearl/5 pb-2 items-start">
+                <span className="col-span-7 text-pearl/65">FX-Adjusted & Linked Multi-Period</span>
+                <span className="col-span-5 text-tealmint font-semibold text-right">Active</span>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-pearl/65">Calculation Logic Audit Trail</span>
-                <span className="text-tealmint font-semibold">Active & Documented</span>
+              <div className="grid grid-cols-12 gap-x-2 items-start">
+                <span className="col-span-7 text-pearl/65">Calculation Logic Audit Trail</span>
+                <span className="col-span-5 text-tealmint font-semibold text-right">Active & Documented</span>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
 
     case 1: // Top-Down Relative Attribution
       return (
-        <div className="flex flex-col gap-4 h-full justify-between animate-fadeIn text-pearl text-left">
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
@@ -106,7 +106,7 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
 
     case 2: // Bottom-Up Absolute Contribution
       return (
-        <div className="flex flex-col gap-4 h-full justify-between animate-fadeIn text-pearl text-left">
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
@@ -148,7 +148,7 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
 
     case 3: // Exposure Analytics
       return (
-        <div className="flex flex-col gap-4 h-full justify-between animate-fadeIn text-pearl text-left">
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
@@ -194,7 +194,7 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
 
     case 4: // Private Equity Analytics
       return (
-        <div className="flex flex-col gap-4 h-full justify-between animate-fadeIn text-pearl text-left">
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
@@ -232,7 +232,7 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
 
     case 5: // AI Performance Agent
       return (
-        <div className="flex flex-col gap-4 h-full justify-between animate-fadeIn text-pearl text-left">
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
@@ -242,11 +242,14 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
               <span className="text-[9px] font-mono text-pearl/40">Secure, Isolated On-Demand Quant commentary</span>
             </div>
 
-            <div className="bg-[#060c14] border border-purple-500/15 rounded-xl p-4 font-mono text-xs relative shadow-inner">
-              <span className="absolute top-2.5 right-3 px-1.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-[7px] text-purple-400">
-                PROPOSAL SAMPLE COMMENTARY
-              </span>
-              <p className="leading-relaxed text-pearl/90 italic pt-1.5">
+            <div className="bg-[#060c14] border border-purple-500/15 rounded-xl p-4 font-mono text-xs shadow-inner">
+              <div className="flex justify-between items-center mb-2.5 pb-2 border-b border-purple-500/10 select-none">
+                <span className="text-[8px] text-pearl/40">AI_COMMENTARY_OUTPUT</span>
+                <span className="px-1.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-[7px] text-purple-400 font-mono">
+                  PROPOSAL SAMPLE COMMENTARY
+                </span>
+              </div>
+              <p className="leading-relaxed text-pearl/90 italic">
                 "Portfolio returned +12.4% YTD, outperforming the composite benchmark by +280 bps. Active return is driven primarily by allocation (+205 bps), led by US Equity (+210 bps) and PE Fund I (+80 bps). Allocation combined with +75 bps in selection return offset slight drag from alternative selection. Exposure drift remains within policy bounds: Equity YTD contribution is 52% (Money Mkt is YTD -10 bps)."
               </p>
             </div>
