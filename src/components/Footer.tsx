@@ -94,7 +94,7 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
                 onClick={() => handleItemClick('/#pricing')}
                 className="text-left text-sm text-pearl/70 hover:text-tealmint transition-colors duration-200"
               >
-                Pricing Tiers
+                Deployment Options
               </button>
               <button
                 onClick={() => handleItemClick('/faq')}
@@ -169,7 +169,7 @@ export default function Footer({ currentPath, onNavigate }: FooterProps) {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-pearl/10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-6 text-xs text-pearl/50">
-            <span>© 2025 OptimizAlpha. All rights reserved.</span>
+            <span>© 2026 OptimizAlpha. All rights reserved.</span>
             <span className="hidden md:inline">·</span>
             <span>Serving Institutional Capital Globally</span>
           </div>

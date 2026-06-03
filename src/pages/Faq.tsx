@@ -6,7 +6,6 @@ import {
   HelpCircle, 
   Layers, 
   Shield, 
-  Cpu, 
   Sparkles, 
   X,
   ArrowRight
@@ -30,7 +29,6 @@ function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProp
       }`}
       onClick={onToggle}
     >
-      {/* Active green vertical border-line */}
       <AnimatePresence>
         {isOpen && (
           <motion.span 
@@ -65,7 +63,7 @@ function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProp
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="text-xs md:text-sm text-pearl/70 leading-relaxed pt-3 pr-2">
+            <p className="text-xs md:text-sm text-pearl/70 leading-relaxed pt-3 pr-2 font-mono whitespace-pre-line">
               {answer}
             </p>
           </motion.div>
@@ -88,100 +86,84 @@ export default function Faq() {
 
   const categories = [
     { name: 'All', icon: <HelpCircle size={16} /> },
-    { name: 'Product', icon: <Layers size={16} /> },
-    { name: 'Data & Security', icon: <Shield size={16} /> },
-    { name: 'Pricing & Onboarding', icon: <Cpu size={16} /> },
-    { name: 'Analytics & Features', icon: <Sparkles size={16} /> }
+    { name: 'Platform Capabilities', icon: <Layers size={16} /> },
+    { name: 'Attribution & Contribution', icon: <Sparkles size={16} /> },
+    { name: 'Deployment & Security', icon: <Shield size={16} /> }
   ];
 
   const faqData = [
     {
-      category: "Product",
+      category: "Platform Capabilities",
       items: [
         {
-          id: "p1",
-          q: "What asset classes does OptimizAlpha support?",
-          a: "Equities, fixed income, mutual funds, private equity, alternatives, and custom asset types. Multi-currency and multi-entity aggregations are resolved natively out of the box."
+          id: "pc1",
+          q: "What is OptimizAlpha?",
+          a: "OptimizAlpha is an institutional-grade investment analytics platform that consolidates fragmented, complex data into a single, decision-making intelligence layer. It is purpose-built for sophisticated investors who require decision-grade insight, institutional-quality reporting of asset classes, and faster, more transparent research cycles."
         },
         {
-          id: "p2",
-          q: "Can we white-label the platform?",
-          a: "Yes. Enterprise clients receive complete white-labeling capability: custom domains, localized branding, customized styling, and firm logo integrations. Your clients see your brand exclusively."
+          id: "pc2",
+          q: "What core capabilities does the platform unify?",
+          a: "The platform unifies performance measurement, attribution analysis, exposure monitoring, private equity analytics, embedded AI investment intelligence, and institutional reporting."
         },
         {
-          id: "p3",
-          q: "Does OptimizAlpha support multiple clients / entities within one firm?",
-          a: "Yes. The platform is engineered on a multi-tenant, schema-isolated PostgreSQL architecture. You can manage multiple distinct client portfolios, sub-entities, and complex hierarchical aggregations with custom role-based entitlements."
+          id: "pc3",
+          q: "What asset classes and entity models are supported?",
+          a: "OptimizAlpha supports all public and private asset classes. The platform utilizes a multi-level entity model spanning Fund, Family, and Account levels."
         },
         {
-          id: "p4",
-          q: "Is there a mobile app?",
-          a: "The web-based platform is built mobile-first, responsive, and renders beautifully across tablet and mobile displays. A dedicated native mobile app is on our future product roadmap."
+          id: "pc4",
+          q: "What performance calculation methodologies are supported?",
+          a: "The engine supports GIPS-aligned calculations including unweighted TWRR, Time Weighted Method (Daily & Modified Dietz Method (Monthly)), and money-weighted (MWRR) returns. It also supports IRR/XIRR, linked multi-period returns, FX-adjusted returns, and benchmark-relative returns, with fully documented calculation logic and a complete audit trail."
         }
       ]
     },
     {
-      category: "Data & Security",
+      category: "Attribution & Contribution",
       items: [
         {
-          id: "s1",
-          q: "How do you handle data ingestion?",
-          a: "We support standardized CSV template uploads, secure API integration pipelines, and direct database feeds. Our technical onboarding team manages complete data mapping and verification as part of implementation."
+          id: "ac1",
+          q: "What performance attribution methodology is used?",
+          a: "A Brinson-Fachler attribution decomposition engine captures performance relative to the benchmark. It decomposes relative return - the difference between portfolio and benchmark - into allocation, selection, and interaction effects at the asset-class and sector levels."
         },
         {
-          id: "s2",
-          q: "Is my client data secure?",
-          a: "Yes. We maintain strict schema-level tenant isolation, encrypt data both at rest and in transit, and adhere strictly to SOC 2 Type II data handling guidelines. Client data is never co-mingled."
+          id: "ac2",
+          q: "What is the difference between relative attribution and absolute contribution?",
+          a: "The two views are complementary:\n- Attribution measures active management skill relative to a benchmark by separating returns into allocation and selection effects.\n- Contribution is absolute and security-focused, measuring the weighted contribution of every individual holding (position weight x position return) and aggregating from the security level upward to determine which holdings built or eroded the portfolio's absolute value."
         },
         {
-          id: "s3",
-          q: "Can we connect our existing custodian or prime broker feeds?",
-          a: "Custom custody and prime broker API integration connects are supported on Professional and Institutional tiers. Our engineering teams implement the structural pipelines."
+          id: "ac3",
+          q: "What is the AI Performance Agent?",
+          a: "The AI Performance Agent is an embedded co-pilot that analyzes performance, attribution, exposure, and private equity data - and writes institutional-grade commentary on demand, compressing reporting and analysis cycles."
         }
       ]
     },
     {
-      category: "Pricing & Onboarding",
+      category: "Deployment & Security",
       items: [
         {
-          id: "i1",
-          q: "How long does implementation take?",
-          a: "Standard setups typically complete in 2 to 4 weeks. Complex multi-entity integrations requiring custom data mapping or historical ingestion may require 4 to 8 weeks. Our integration managers lead the entire workflow."
+          id: "ds1",
+          q: "What deployment options are offered?",
+          a: "OptimizAlpha is offered under two deployment models:\n- On-Premise (In-Perimeter): Recommended model for immediate deployment. Sourced for institutional clients with strict security, privacy, and sovereignty requirements.\n- SaaS (Cloud-Hosted): Currently under development, expected to be available within 12-18 months. Offered as a backup option for clients preferring a fully managed cloud service."
         },
         {
-          id: "i2",
-          q: "Is there a minimum contract length?",
-          a: "Annual agreements are standard platform licensing structures. Multi-year agreements are available with custom volume preferences."
+          id: "ds2",
+          q: "How does the On-Premise model address data residency concerns?",
+          a: "No cross-border data transfer and no third party in the data path. Client data remains within your environment in your chosen jurisdiction, removing cross-residency and regulatory compliance uncertainty rather than mitigating it."
         },
         {
-          id: "i3",
-          q: "Do you offer a free trial or pilot?",
-          a: "We provide structured, high-fidelity proof-of-concept pilot integrations using your firm's historical data for qualified family offices and institutions."
+          id: "ds3",
+          q: "How does the On-Premise model ensure information security?",
+          a: "The solution is deployed within your existing, security-reviewed and approved architecture under your own network and security controls. Decisions regarding application access - whether internal or external users - remain entirely at your discretion."
         },
         {
-          id: "i4",
-          q: "What does onboarding include?",
-          a: "Onboarding includes full schema setup, data mapping/cleaning pipelines, staff user training, and a dedicated quantitative success manager for the initial 90 days."
-        }
-      ]
-    },
-    {
-      category: "Analytics & Features",
-      items: [
-        {
-          id: "a1",
-          q: "What performance attribution methodology do you use?",
-          a: "We implement the Brinson-Fachler attribution model, which supports top-down and bottom-up attribution at sector, manager, and security levels."
+          id: "ds4",
+          q: "How does the On-Premise model address operational continuity?",
+          a: "The platform runs on infrastructure you already operate, under your existing business continuity frameworks. There is no vendor-side production environment that can fail."
         },
         {
-          id: "a2",
-          q: "Can we customize the dashboards?",
-          a: "Yes. The Custom View module allows your investment teams to arrange, configure, and save bespoke layout blocks focusing on the metrics most essential to your investment committee."
-        },
-        {
-          id: "a3",
-          q: "Does the AI chatbot have access to all portfolio data?",
-          a: "The conversational AI chatbot operates within the exact sandbox scoping of your firm's database. It respects standard role-based credentials and answers queries using isolated local models without exposing data."
+          id: "ds5",
+          q: "What happens if there are concerns about the viability of OptimizAlpha?",
+          a: "A source-code escrow model or contingency arrangement (source-code release in the event of insolvency or abandonment of the software) is ready. The code is already within your perimeter, fully documented, so your team or a third party can operate it independently, providing clear contractual recourse."
         }
       ]
     }
@@ -196,42 +178,38 @@ export default function Faq() {
     );
     return { ...cat, items };
   }).filter(cat => {
-    // If searching, keep category if it contains search results
     if (searchQuery) return cat.items.length > 0;
-    // Otherwise, filter by tab selection
     return selectedCategory === 'All' || cat.category === selectedCategory;
   });
 
   return (
     <SpotlightEffect opacity={0.12} className="bg-navy min-h-screen pt-32 pb-24 text-pearl bg-financial-grid relative">
-      {/* Background blobs for depth */}
       <div className="absolute top-1/4 left-1/10 w-96 h-96 rounded-full bg-ocean/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/10 w-96 h-96 rounded-full bg-tealmint/5 blur-[120px] pointer-events-none" />
 
       {/* Header section */}
       <section className="max-w-4xl mx-auto px-6 mb-16 text-center relative z-10">
         <span className="font-mono text-xs text-tealmint uppercase tracking-widest block mb-3 border border-tealmint/25 bg-tealmint/5 rounded-full px-4 py-1.5 w-max mx-auto shadow-md">
-          Knowledge Base
+          Platform Documentation
         </span>
         <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight text-pearl mb-6">
-          Everything you need to know.
+          Institutional FAQ Center
         </h1>
         <p className="text-sm md:text-base text-pearl/70 max-w-xl mx-auto leading-relaxed">
-          Search detailed documentation, product limits, quantitative methodologies, security configurations, and implementation timelines.
+          Search detailed answers regarding platform capabilities, quantitative calculation methodologies, deployment options, and security configurations.
         </p>
 
         {/* Custom Search Input */}
         <div className="relative max-w-xl mx-auto mt-10">
           <input
             type="text"
-            placeholder="Search FAQs (e.g., attribution, security, Postgres)..."
+            placeholder="Search FAQs (e.g., attribution, in-perimeter, TWRR)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-12 pr-12 py-3.5 rounded-full bg-[#050c12]/80 border border-tealmint/20 text-sm text-pearl placeholder-pearl/40 focus:outline-none focus:border-tealmint focus:ring-1 focus:ring-tealmint backdrop-blur-md shadow-lg transition-all"
           />
           <Search size={18} className="absolute left-4.5 top-1/2 -translate-y-1/2 text-pearl/40" />
           
-          {/* Clear Search Button */}
           {searchQuery && (
             <button 
               onClick={() => setSearchQuery('')}
@@ -247,7 +225,7 @@ export default function Faq() {
       <section className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* 1. Left Sidebar Navigation (Desktop only) */}
+          {/* Left Sidebar Navigation */}
           <div className="hidden lg:col-span-3 lg:flex flex-col gap-2.5 sticky top-28 bg-[#050c12]/80 border border-tealmint/15 p-5 rounded-2xl backdrop-blur-md shadow-xl">
             <span className="font-mono text-[9px] text-pearl/40 uppercase tracking-widest block mb-2 px-3">
               Categories
@@ -259,7 +237,7 @@ export default function Faq() {
                   key={idx}
                   onClick={() => {
                     setSelectedCategory(cat.name);
-                    setSearchQuery(''); // Clear search to show category selection
+                    setSearchQuery('');
                   }}
                   disabled={!!searchQuery}
                   className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-display text-base font-bold transition-all text-left group ${
@@ -284,7 +262,7 @@ export default function Faq() {
             })}
           </div>
 
-          {/* 2. Horizontal Scrollbar Ribbon (Mobile only) */}
+          {/* Horizontal Scrollbar Ribbon (Mobile only) */}
           <div className="lg:hidden w-full overflow-x-auto scroll-hide-scrollbar flex gap-2 pb-2">
             {categories.map((cat, idx) => {
               const isActive = selectedCategory === cat.name && !searchQuery;
@@ -311,7 +289,7 @@ export default function Faq() {
             })}
           </div>
 
-          {/* 3. Right side Accordion Showcase Panel */}
+          {/* Right side Accordion Showcase Panel */}
           <div className="lg:col-span-9 bg-[#050c12]/80 border border-tealmint/15 rounded-3xl p-6 md:p-10 backdrop-blur-md shadow-2xl premium-glow-shadow relative">
             <div className="absolute inset-0 bg-gradient-to-b from-ocean/5 to-transparent pointer-events-none rounded-3xl" />
             
@@ -327,7 +305,6 @@ export default function Faq() {
                 >
                   {filteredData.map((cat, idx) => (
                     <div key={idx} className="flex flex-col gap-5">
-                      {/* Header title for category */}
                       <div className="flex items-center gap-3 border-b border-tealmint/20 pb-3.5">
                         <span className="text-tealmint">
                           {categories.find(c => c.name === cat.category)?.icon || <HelpCircle size={16} />}
@@ -336,11 +313,10 @@ export default function Faq() {
                           {cat.category}
                         </h3>
                         <span className="font-mono text-[9px] text-pearl/40 ml-auto bg-tealmint/5 border border-tealmint/10 rounded-full px-2.5 py-0.5">
-                          {cat.items.length} {cat.items.length === 1 ? 'article' : 'articles'}
+                          {cat.items.length} {cat.items.length === 1 ? 'Q&A' : 'Q&As'}
                         </span>
                       </div>
                       
-                      {/* List items */}
                       <div className="grid grid-cols-1 gap-4">
                         {cat.items.map((item) => (
                           <AccordionItem
@@ -367,9 +343,9 @@ export default function Faq() {
                     <HelpCircle size={40} className="animate-pulse" />
                   </div>
                   <div className="flex flex-col gap-1.5 max-w-sm">
-                    <h3 className="font-display text-xl font-bold text-pearl">No Articles Found</h3>
+                    <h3 className="font-display text-xl font-bold text-pearl">No FAQ Found</h3>
                     <p className="text-xs text-pearl/50 leading-relaxed">
-                      We couldn't find any knowledge base documents matching your search term: <strong>"{searchQuery}"</strong>. Please try searching for 'attribution', 'security', or 'onboarding'.
+                      We couldn't find any proposal documentation matching your search term: <strong>"{searchQuery}"</strong>. Please search for 'attribution', 'perimeter', or 'TWRR'.
                     </p>
                   </div>
                   <button 

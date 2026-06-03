@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Globe, MapPin, Linkedin, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Mail, Globe, Linkedin, CheckCircle2, AlertCircle } from 'lucide-react';
 import SpotlightEffect from '../components/SpotlightEffect';
 
 interface FormState {
@@ -351,16 +351,16 @@ ${formData.message}
                   </div>
                 </div>
 
-                {/* Location item */}
+                {/* Classification item */}
                 <div className="flex gap-4 items-center group cursor-pointer">
                   <div className="p-3.5 rounded-full bg-tealmint/5 border border-tealmint/25 text-tealmint group-hover:bg-tealmint group-hover:text-navy transition-all duration-300 shadow-md group-hover:shadow-lg group-hover:shadow-tealmint/20">
-                    <MapPin size={18} />
+                    <Globe size={18} />
                   </div>
                   <div>
                     <span className="text-[9px] font-mono text-pearl/40 uppercase tracking-widest block font-bold group-hover:text-tealmint/60 transition-colors">
-                      [locations]
+                      [classification]
                     </span>
-                    <span className="text-sm font-mono text-pearl font-semibold block mt-0.5">India (HQ serving APAC & ME)</span>
+                    <span className="text-sm font-mono text-pearl font-semibold block mt-0.5">Confidential · Institutional Investors</span>
                   </div>
                 </div>
               </div>
