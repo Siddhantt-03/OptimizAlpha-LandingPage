@@ -22,13 +22,13 @@ interface MetricCardProps {
 
 function MetricCard({ label, value, change, isPositive, subtext, compact = false }: MetricCardProps) {
   return (
-    <div className={`bg-[#0b141e] border border-tealmint/10 rounded-xl transition-all duration-300 shadow-md hover:border-tealmint/30 ${
-      compact ? 'p-2.5 sm:p-3.5' : 'p-3.5 sm:p-5'
+    <div className={`bg-[#0b141e] border border-tealmint/10 rounded-xl transition-all duration-300 shadow-md hover:border-tealmint/30 text-center flex flex-col items-center justify-center ${
+      compact ? 'p-2 sm:p-3.5' : 'p-2.5 sm:p-5'
     }`}>
-      <span className={`font-mono text-pearl/50 uppercase tracking-wider block ${
+      <span className={`font-mono text-pearl/50 uppercase tracking-wider block w-full ${
         compact ? 'text-[8px] sm:text-[9px]' : 'text-[9px] sm:text-[11px]'
       }`}>{label}</span>
-      <div className="flex items-baseline gap-1.5 mt-1.5 flex-wrap">
+      <div className="flex items-baseline justify-center gap-1.5 mt-1.5 flex-wrap w-full">
         <span className={`font-mono font-semibold text-pearl ${
           compact ? 'text-base sm:text-lg md:text-xl' : 'text-lg sm:text-2xl'
         }`}>{value}</span>
@@ -41,10 +41,23 @@ function MetricCard({ label, value, change, isPositive, subtext, compact = false
         )}
       </div>
       {subtext && (
-        <span className={`font-mono text-pearl/40 block mt-1 ${
+        <span className={`font-mono text-pearl/40 block mt-1 w-full leading-tight ${
           compact ? 'text-[8px] sm:text-[9px]' : 'text-[9px] sm:text-[10px]'
         }`}>
-          {subtext}
+          {subtext.includes('/') ? (
+            subtext.split('/').map((part, index, arr) => (
+              <span key={index}>
+                {part}
+                {index < arr.length - 1 && (
+                  <>
+                    /<wbr />
+                  </>
+                )}
+              </span>
+            ))
+          ) : (
+            subtext
+          )}
         </span>
       )}
     </div>
@@ -424,10 +437,10 @@ export default function InteractiveDashboard({ isHero = false }: InteractiveDash
                   </svg>
                   
                   {/* Floating J-Curve Stage labels */}
-                  <div className="absolute top-[85%] left-1/4 -translate-x-1/2 text-[8px] font-mono text-red-400/80">
+                  <div className="absolute bottom-2.5 left-3 sm:left-[28%] translate-x-0 sm:-translate-x-1/2 text-[8px] font-mono text-red-400/90 text-left sm:text-center max-w-[110px] sm:max-w-none bg-[#04090e] border border-red-400/25 px-1.5 py-0.5 rounded shadow-lg z-10">
                     Drawdown Phase (Net Capital Calls)
                   </div>
-                  <div className="absolute top-[15%] left-[80%] -translate-x-1/2 text-[8px] font-mono text-tealmint">
+                  <div className="absolute top-[15%] right-3 sm:left-[80%] translate-x-0 sm:-translate-x-1/2 text-[8px] font-mono text-tealmint text-right sm:text-center max-w-[110px] sm:max-w-none bg-[#04090e] border border-tealmint/25 px-1.5 py-0.5 rounded shadow-lg z-10">
                     Realization Phase (TVPI: 1.54x)
                   </div>
                 </div>

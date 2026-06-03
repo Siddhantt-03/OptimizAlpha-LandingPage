@@ -10,6 +10,7 @@ interface NavbarProps {
 export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,47 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (currentPath !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -50% 0px',
+      threshold: 0.1
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    const platformEl = document.getElementById('platform');
+    const featuresEl = document.getElementById('features');
+
+    if (platformEl) observer.observe(platformEl);
+    if (featuresEl) observer.observe(featuresEl);
+
+    const handleHeroScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('');
+      }
+    };
+    window.addEventListener('scroll', handleHeroScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleHeroScroll);
+    };
+  }, [currentPath]);
 
   const navItems = [
     { label: 'Platform', path: '/#platform' },
@@ -74,9 +116,15 @@ export default function Navbar({ currentPath, onNavigate }: NavbarProps) {
           {/* Center Links (Desktop) */}
           <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => {
-              const isActive =
-                currentPath === item.path ||
-                (item.path.startsWith('/#') && currentPath === '/');
+              const isLinkActive = () => {
+                if (currentPath !== '/') {
+                  return currentPath === item.path;
+                }
+                if (item.path === '/#platform') return activeSection === 'platform';
+                if (item.path === '/#features') return activeSection === 'features';
+                return false;
+              };
+              const isActive = isLinkActive();
               return (
                 <button
                   key={item.label}
