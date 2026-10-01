@@ -220,7 +220,7 @@ export default function Home({ onNavigate }: HomeProps) {
               </span>
             </div>
             <h2 className="font-display text-5xl md:text-6xl font-bold tracking-tight text-pearl leading-none mt-2">
-              Performance, Attribution, and Exposure. <br />
+              Reconciliation, Performance, Attribution, and Exposure. <br />
               <span className="bg-gradient-to-r from-ocean to-tealmint bg-clip-text text-transparent">Natively integrated.</span>
             </h2>
           </div>
