@@ -4,7 +4,8 @@ import {
   Layers, 
   MessageSquare,
   Activity,
-  Award
+  Award,
+  ShieldCheck
 } from 'lucide-react';
 
 interface FeatureShowcaseProps {
@@ -253,6 +254,49 @@ export default function FeatureShowcase({ activeIndex }: FeatureShowcaseProps) {
                 "Portfolio returned +12.4% YTD, outperforming the composite benchmark by +280 bps. Active return is driven primarily by allocation (+205 bps), led by US Equity (+210 bps) and PE Fund I (+80 bps). Allocation combined with +75 bps in selection return offset slight drag from alternative selection. Exposure drift remains within policy bounds: Equity YTD contribution is 52% (Money Mkt is YTD -10 bps)."
               </p>
             </div>
+          </div>
+        </div>
+      );
+
+    case 6: // Data Reconciliation & Control
+      return (
+        <div className="flex flex-col gap-4 min-h-full justify-between animate-fadeIn text-pearl text-left">
+          <div className="space-y-4">
+            <div>
+              <h4 className="text-sm font-semibold text-pearl flex items-center gap-1.5">
+                <ShieldCheck size={14} className="text-tealmint" />
+                <span>Reconciliation Control Gate</span>
+              </h4>
+              <span className="text-[9px] font-mono text-pearl/40">Detect → Match → Trace → Explain → Sign-off → Release</span>
+            </div>
+
+            <div className="bg-[#0b141e] border border-tealmint/10 rounded-xl p-4 space-y-2.5 font-mono text-xs">
+              {[
+                ["Holdings, transactions & cash roll-forward", "Deterministic"],
+                ["Valuation split: quantity · price · FX", "Deterministic"],
+                ["Break root cause with evidence", "AI + validator"],
+                ["Maker-checker sign-off", "Required"],
+                ["Release to analytics engines", "Gated"]
+              ].map(([k, v], i, a) => (
+                <div key={k} className={`grid grid-cols-12 gap-x-2 items-start ${i < a.length - 1 ? 'border-b border-pearl/5 pb-2' : ''}`}>
+                  <span className="col-span-8 text-pearl/65">{k}</span>
+                  <span className="col-span-4 text-tealmint font-semibold text-right">{v}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <a href="/features/reconciliation/custodian-only.html" target="_blank" rel="noopener" className="text-xs font-semibold text-navy bg-tealmint rounded-lg px-3 py-1.5 hover:opacity-90 transition-opacity">
+                Open walkthrough · custodian only ↗
+              </a>
+              <a href="/features/reconciliation/custodian-and-manager.html" target="_blank" rel="noopener" className="text-xs font-semibold text-tealmint border border-tealmint/40 rounded-lg px-3 py-1.5 hover:bg-tealmint/10 transition-colors">
+                Custodian + manager ↗
+              </a>
+            </div>
+          </div>
+
+          <div className="bg-[#050b11] border border-tealmint/10 rounded-xl p-3 text-[9px] font-mono text-pearl/50">
+            * Illustrative eight-day example. 18 of 18 test scenarios detected; nothing is released until it is matched or approved.
           </div>
         </div>
       );

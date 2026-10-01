@@ -7,7 +7,8 @@ import {
   MessageSquare,
   Activity,
   Award,
-  ChevronRight
+  ChevronRight,
+  ShieldCheck
 } from 'lucide-react';
 import InteractiveDashboard from '../components/InteractiveDashboard';
 import SpotlightEffect from '../components/SpotlightEffect';
@@ -90,6 +91,16 @@ export default function Home({ onNavigate }: HomeProps) {
       title: "AI Commentary Engine",
       desc: "An embedded co-pilot that analyzes performance, attribution, exposure, and private equity data - and writes institutional-grade commentary on demand, compressing reporting cycles while strengthening narratives.",
       pill: "AI Intelligence"
+    },
+    {
+      Icon: ShieldCheck,
+      title: "Data Reconciliation & Control",
+      desc: "Every custodian file is reconciled point-to-point before it reaches the analytics engines. Holdings, transactions, cash and valuations are matched, every break is traced to its cause with evidence, and nothing is released until it is matched or approved under maker-checker control.",
+      pill: "Pre-Release Gate",
+      links: [
+        { label: "Walkthrough · custodian only", href: "/features/reconciliation/custodian-only.html" },
+        { label: "Walkthrough · custodian + manager", href: "/features/reconciliation/custodian-and-manager.html" }
+      ]
     }
   ];
 
@@ -259,6 +270,22 @@ export default function Home({ onNavigate }: HomeProps) {
                       <p className="text-xs text-pearl/70 leading-relaxed group-hover:text-pearl/90 transition-colors">
                         {feat.desc}
                       </p>
+                      {feat.links && (
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {feat.links.map((l) => (
+                            <a
+                              key={l.href}
+                              href={l.href}
+                              target="_blank"
+                              rel="noopener"
+                              onClick={(e) => e.stopPropagation()}
+                              className="font-mono text-[10px] uppercase tracking-wider text-tealmint px-2.5 py-1 rounded-full border border-tealmint/30 hover:bg-tealmint/10 transition-colors"
+                            >
+                              {l.label} ↗
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 );
@@ -335,6 +362,22 @@ export default function Home({ onNavigate }: HomeProps) {
                   <p className="text-xs text-pearl/70 leading-relaxed">
                     {feat.desc}
                   </p>
+                  {feat.links && (
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      {feat.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener"
+                          onClick={(e) => e.stopPropagation()}
+                          className="font-mono text-[10px] uppercase tracking-wider text-tealmint px-2.5 py-1 rounded-full border border-tealmint/30 hover:bg-tealmint/10 transition-colors"
+                        >
+                          {l.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  )}
 
                   {/* Accordion Expandable Snapshot Preview */}
                   {isExpanded && (
